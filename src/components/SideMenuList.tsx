@@ -3,6 +3,7 @@ import AboutIcon from './ui/icons/AboutIcon';
 import CategoryIcon from './ui/icons/CategoryIcon';
 import FolderIcon from './ui/icons/FolderIcon';
 import HomeIcon from './ui/icons/HomeIcon';
+import TagIcon from './ui/icons/TagIcon';
 
 const menus = [
   {
@@ -14,6 +15,11 @@ const menus = [
     href: '/category',
     icon: <CategoryIcon />,
     text: 'categories',
+  },
+  {
+    href: '/tags',
+    icon: <TagIcon />,
+    text: 'tags',
   },
   {
     href: '/about',
