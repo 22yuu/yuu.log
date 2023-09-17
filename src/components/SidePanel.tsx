@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import Hero from './Hero';
-import SideMenuList from './SideMenuList';
-import Contact from './Contact';
-import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import Link from "next/link";
+import Hero from "./Hero";
+import SideMenuList from "./SideMenuList";
+import Contact from "./Contact";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 export default function SidePanel() {
-  const pathName = usePathname().split('/')[1];
+  const pathName = usePathname().split("/")[1];
   // const [hidden, setHidden] = useState('');
   console.log(pathName);
 
@@ -16,14 +16,14 @@ export default function SidePanel() {
   //   setTimeout(() => {
   //     setHidden('hidden');
   //   }, 1000);
-  // }, []);
+  // }, []); -translate-x-[350px] transition ease-in duration-300
 
   return (
     <section
       className={`w-[350px] h-full bg-neutral-300 flex flex-col items-center ${
-        pathName === 'portfolio'
-          ? `-translate-x-[350px] transition ease-in duration-300`
-          : ''
+        pathName === "portfolio"
+          ? `-ml-[350px] transition-all ease-in duration-300`
+          : ""
       }`}
     >
       <Hero />

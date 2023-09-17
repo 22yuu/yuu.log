@@ -1,41 +1,47 @@
-import Link from 'next/link';
-import AboutIcon from './ui/icons/AboutIcon';
-import CategoryIcon from './ui/icons/CategoryIcon';
-import FolderIcon from './ui/icons/FolderIcon';
-import HomeIcon from './ui/icons/HomeIcon';
-import TagIcon from './ui/icons/TagIcon';
+import Link from "next/link";
+import AboutIcon from "./ui/icons/AboutIcon";
+import CategoryIcon from "./ui/icons/CategoryIcon";
+import FolderIcon from "./ui/icons/FolderIcon";
+import HomeIcon from "./ui/icons/HomeIcon";
+import TagIcon from "./ui/icons/TagIcon";
+import ProjectsIcon from "./ui/icons/ProjectsIcon";
 
 const menus = [
   {
-    href: '/home',
+    href: "/home",
     icon: <HomeIcon />,
-    text: 'home',
+    text: "home",
   },
   {
-    href: '/category',
+    href: "/category",
     icon: <CategoryIcon />,
-    text: 'categories',
+    text: "categories",
   },
   {
-    href: '/tags',
+    href: "/projects",
+    icon: <ProjectsIcon />,
+    text: "projects",
+  },
+  {
+    href: "/tags",
     icon: <TagIcon />,
-    text: 'tags',
+    text: "tags",
   },
   {
-    href: '/about',
+    href: "/about",
     icon: <AboutIcon />,
-    text: 'about',
+    text: "about",
   },
   {
-    href: '/portfolio',
+    href: "/portfolio",
     icon: <FolderIcon />,
-    text: 'portfolio',
+    text: "portfolio",
   },
 ];
 
 export default function SideMenuList() {
   return (
-    <section className="w-full mt-16">
+    <section className="w-full mt-8">
       <ul className="pl-8">
         {menus.map((menu, index) => (
           <li

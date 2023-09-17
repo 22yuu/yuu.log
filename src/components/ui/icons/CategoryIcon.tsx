@@ -1,4 +1,4 @@
-import { BiCategory } from 'react-icons/bi';
+import { BiSolidCategory } from "react-icons/bi";
 export default function CategoryIcon() {
-  return <BiCategory className="w-7 h-7"></BiCategory>;
+  return <BiSolidCategory className="w-7 h-7"></BiSolidCategory>;
 }
