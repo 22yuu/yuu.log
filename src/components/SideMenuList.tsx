@@ -1,43 +1,5 @@
 import Link from "next/link";
-import AboutIcon from "./ui/icons/AboutIcon";
-import CategoryIcon from "./ui/icons/CategoryIcon";
-import FolderIcon from "./ui/icons/FolderIcon";
-import HomeIcon from "./ui/icons/HomeIcon";
-import TagIcon from "./ui/icons/TagIcon";
-import ProjectsIcon from "./ui/icons/ProjectsIcon";
-
-const menus = [
-  {
-    href: "/home",
-    icon: <HomeIcon />,
-    text: "home",
-  },
-  {
-    href: "/category",
-    icon: <CategoryIcon />,
-    text: "categories",
-  },
-  {
-    href: "/projects",
-    icon: <ProjectsIcon />,
-    text: "projects",
-  },
-  {
-    href: "/tags",
-    icon: <TagIcon />,
-    text: "tags",
-  },
-  {
-    href: "/about",
-    icon: <AboutIcon />,
-    text: "about",
-  },
-  {
-    href: "/portfolio",
-    icon: <FolderIcon />,
-    text: "portfolio",
-  },
-];
+import { menus } from "@/constants/type-menus";
 
 export default function SideMenuList() {
   return (
