@@ -1,3 +1,5 @@
+import MainWrapper from '@/components/layouts/MainWrapper';
+
 export default function page() {
-  return <div>tags</div>;
+  return <MainWrapper>tags</MainWrapper>;
 }

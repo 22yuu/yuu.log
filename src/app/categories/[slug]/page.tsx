@@ -5,7 +5,5 @@ type Props = {
 };
 
 export default function CategorytPage({ params: { slug } }: Props) {
-  console.log(slug);
-
   return <div>{slug}</div>;
 }

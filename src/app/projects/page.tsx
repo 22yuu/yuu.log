@@ -1,3 +1,5 @@
+import MainWrapper from '@/components/layouts/MainWrapper';
+
 export default function page() {
-  return <div>Projects</div>;
+  return <MainWrapper>Projects</MainWrapper>;
 }

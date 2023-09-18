@@ -1,3 +1,5 @@
+import MainWrapper from '@/components/layouts/MainWrapper';
+
 export default function AboutPage() {
-  return <div>about</div>;
+  return <MainWrapper>about</MainWrapper>;
 }

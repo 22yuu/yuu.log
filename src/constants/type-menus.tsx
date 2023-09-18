@@ -1,18 +1,18 @@
-import AboutIcon from "@/components/ui/icons/AboutIcon";
-import CategoryIcon from "@/components/ui/icons/CategoryIcon";
-import FolderIcon from "@/components/ui/icons/FolderIcon";
-import HomeIcon from "@/components/ui/icons/HomeIcon";
-import TagIcon from "@/components/ui/icons/TagIcon";
-import ProjectsIcon from "@/components/ui/icons/ProjectsIcon";
+import AboutIcon from '@/components/ui/icons/AboutIcon';
+import CategoryIcon from '@/components/ui/icons/CategoryIcon';
+import FolderIcon from '@/components/ui/icons/FolderIcon';
+import HomeIcon from '@/components/ui/icons/HomeIcon';
+import TagIcon from '@/components/ui/icons/TagIcon';
+import ProjectsIcon from '@/components/ui/icons/ProjectsIcon';
 
-type MenuList = {
+export type MenuList = {
   [key: string]:
-    | "home"
-    | "categories"
-    | "projects"
-    | "tags"
-    | "about"
-    | "portfolio";
+    | 'home'
+    | 'categories'
+    | 'projects'
+    | 'tags'
+    | 'about'
+    | 'portfolio';
 };
 
 type MenuObject = {
@@ -22,43 +22,43 @@ type MenuObject = {
 };
 
 export const categories: MenuList = {
-  home: "home",
-  categories: "categories",
-  projects: "projects",
-  tags: "tags",
-  about: "about",
-  portfolio: "portfolio",
+  home: 'home',
+  categories: 'categories',
+  projects: 'projects',
+  tags: 'tags',
+  about: 'about',
+  portfolio: 'portfolio',
 };
 
 export const menus: MenuObject[] = [
   {
-    href: "/home",
+    href: '/',
     icon: <HomeIcon />,
-    text: "home",
+    text: 'home',
   },
   {
-    href: "/categories",
+    href: '/categories',
     icon: <CategoryIcon />,
-    text: "categories",
+    text: 'categories',
   },
   {
-    href: "/projects",
+    href: '/projects',
     icon: <ProjectsIcon />,
-    text: "projects",
+    text: 'projects',
   },
   {
-    href: "/tags",
+    href: '/tags',
     icon: <TagIcon />,
-    text: "tags",
+    text: 'tags',
   },
   {
-    href: "/about",
+    href: '/about',
     icon: <AboutIcon />,
-    text: "about",
+    text: 'about',
   },
   {
-    href: "/portfolio",
+    href: '/portfolio',
     icon: <FolderIcon />,
-    text: "portfolio",
+    text: 'portfolio',
   },
 ];
