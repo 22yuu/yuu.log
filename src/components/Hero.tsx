@@ -9,6 +9,7 @@ export default function Hero() {
         width={175}
         height={175}
         className="w-full h-full rounded-full object-cover"
+        priority
       />
     </div>
   );

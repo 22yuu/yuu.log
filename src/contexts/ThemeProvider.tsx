@@ -22,10 +22,8 @@ export default function ThemeProvider({ children }: Props) {
   };
 
   useEffect(() => {
-    const isDark =
-      localStorage.theme === 'dark' ||
-      (!('theme' in localStorage) &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const isDark = getCurrentThemeState();
+
     setDark(isDark);
     updateDarkMode(isDark);
   }, []);
@@ -34,6 +32,14 @@ export default function ThemeProvider({ children }: Props) {
     <DarkModeContext.Provider value={{ dark, toggleDarkMode }}>
       {children}
     </DarkModeContext.Provider>
+  );
+}
+
+function getCurrentThemeState() {
+  return (
+    localStorage.theme === 'dark' ||
+    (!('theme' in localStorage) &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches)
   );
 }
 

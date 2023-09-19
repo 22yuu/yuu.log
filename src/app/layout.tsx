@@ -3,9 +3,27 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
 import ThemeProvider from '@/contexts/ThemeProvider';
-import Script from 'next/script';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
+
+const ScriptTag = () => {
+  const codeToRunOnClient = `(function() {
+    const isDark =
+    localStorage.theme === 'dark' ||
+    (!('theme' in localStorage) &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+  if (isDark) {
+    document.documentElement.classList.add('dark');
+    localStorage.theme = 'dark';
+  } else {
+    document.documentElement.classList.remove('dark');
+    localStorage.theme = 'dark';
+  }
+})()`;
+
+  return <script dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />;
+};
 
 export const metadata: Metadata = {
   title: 'Wellcom! My Blog! <Yuu.log />',
@@ -20,6 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${openSans.className} bg-theme-bg`}>
+        <ScriptTag />
         <ThemeProvider>
           <div className="w-full h-full flex">
             <SidePanel />
