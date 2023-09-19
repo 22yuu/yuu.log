@@ -1,3 +1,4 @@
+'use client';
 import MainWrapper from '@/components/layouts/MainWrapper';
 
 export default function HomePage() {

@@ -1,7 +1,9 @@
 'use client';
+
 import { categories } from '@/constants/type-menus';
 import { usePathname } from 'next/navigation';
 import Search from '../Search';
+import ToggleDarkModeBtn from '../ToggleDarkModeBtn';
 
 export default function Header() {
   const category = usePathname().split('/')[1] || categories.home;
@@ -17,7 +19,10 @@ export default function Header() {
         <div className="block w-[70%] text-lg font-semibold text-center text-ellipsis whitespace-nowrap md:hidden">
           Yuu
         </div>
-        <Search />
+        <div className="flex gap-2">
+          <Search />
+          <ToggleDarkModeBtn />
+        </div>
       </div>
     </header>
   );
