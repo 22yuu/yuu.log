@@ -15,8 +15,8 @@ export default function SideMenuList() {
             key={index}
             className={`w-full mb-4 border-r-2 ${
               currentMenu === menu.text
-                ? 'border-r-slate-800'
-                : 'hover:border-r-slate-800'
+                ? 'border-r-white text-white'
+                : 'text-zinc-400 hover:border-r-white hover:text-white'
             } `}
           >
             <Link href={menu.href} className="flex">

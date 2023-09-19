@@ -1,25 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import MoonIcon from './ui/icons/MoonIcon';
 import SunIcon from './ui/icons/SunIcon';
+import { useDarkMode, ContextProps } from '@/contexts/ThemeProvider';
 
 const ToggleDarkModeBtn = () => {
-  const [toggle, setToggle] = useState(false); // default false -> light mode
-  console.log('??');
-
-  const onHandleToggle = () => {
-    console.log(toggle);
-    setToggle(!toggle);
-  };
-
-  useEffect(() => {
-    console.log('Toggle Dark Mode Button');
-  }, []);
+  const { dark: isDark, toggleDarkMode } = useDarkMode() as ContextProps;
 
   return (
-    <button onClick={onHandleToggle}>
-      {!toggle ? <MoonIcon /> : <SunIcon />}
+    <button onClick={toggleDarkMode}>
+      {!isDark ? <MoonIcon /> : <SunIcon />}
     </button>
   );
 };

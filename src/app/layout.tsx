@@ -2,6 +2,8 @@ import SidePanel from '@/components/SidePanel';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
+import ThemeProvider from '@/contexts/ThemeProvider';
+import Script from 'next/script';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
 
@@ -17,11 +19,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${openSans.className}`}>
-        <div className="w-full h-full flex">
-          <SidePanel />
-          {children}
-        </div>
+      <body className={`${openSans.className} bg-theme-bg`}>
+        <ThemeProvider>
+          <div className="w-full h-full flex">
+            <SidePanel />
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
