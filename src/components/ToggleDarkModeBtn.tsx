@@ -8,7 +8,10 @@ const ToggleDarkModeBtn = () => {
   const { dark: isDark, toggleDarkMode } = useDarkMode() as ContextProps;
 
   return (
-    <button onClick={toggleDarkMode}>
+    <button
+      onClick={toggleDarkMode}
+      className={`${isDark ? 'text-yellow-300' : ''}`}
+    >
       {!isDark ? <MoonIcon /> : <SunIcon />}
     </button>
   );
