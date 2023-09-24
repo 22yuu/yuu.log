@@ -1,10 +1,13 @@
 import mariadb from 'mariadb';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const CONNECTION_INFO = {
-  host: 'localhost',
-  user: 'root',
-  password: 'wlsdb11@@',
-  database: 'myblog',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_DATABASE,
 };
 
 export default class MariaDB {
