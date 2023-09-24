@@ -1,4 +1,4 @@
-import SidePanel from '@/components/SidePanel';
+import SideMenuPanel from '@/components/SideMenuPanel';
 
 export default function ClientLayout({
   children,
@@ -8,7 +8,7 @@ export default function ClientLayout({
   return (
     <>
       <div className="w-full h-full flex">
-        <SidePanel />
+        <SideMenuPanel />
         {children}
       </div>
     </>

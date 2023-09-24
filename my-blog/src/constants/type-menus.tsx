@@ -38,12 +38,12 @@ export const menus: MenuObject[] = [
   },
   {
     href: '/categories',
-    icon: <CategoryIcon />,
+    icon: <CategoryIcon className="w-7 h-7" />,
     text: 'categories',
   },
   {
     href: '/projects',
-    icon: <ProjectsIcon />,
+    icon: <ProjectsIcon className="w-7 h-7" />,
     text: 'projects',
   },
   {

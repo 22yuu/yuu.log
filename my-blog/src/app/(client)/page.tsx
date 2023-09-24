@@ -1,81 +1,20 @@
 'use client';
+
 import MainWrapper from '@/components/layouts/MainWrapper';
-import Link from 'next/link';
+import PostCard from '@/components/posts/PostCard';
 
 export default function HomePage() {
   return (
     <MainWrapper>
-      <div className="w-full h-40 pt-6 pb-4 text-theme-text">
-        <h2 className="font-semibold text-xl">
-          <Link href="#">This is title...!</Link>
-        </h2>
-        <p className="my-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ipsam
-          earum, ab cupiditate voluptatum, eligendi beatae suscipit provident
-          commodi quisquam voluptas consequuntur eum doloremque repellendus, quo
-          ducimus quis asperiores aspernatur?
-        </p>
-        <div>달력 카테고리 </div>
-      </div>
-      <div className="w-full h-40 pt-6 pb-4 text-theme-text">
-        <h2 className="font-semibold text-xl">
-          <Link href="#">This is title...!</Link>
-        </h2>
-        <p className="my-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ipsam
-          earum, ab cupiditate voluptatum, eligendi beatae suscipit provident
-          commodi quisquam voluptas consequuntur eum doloremque repellendus, quo
-          ducimus quis asperiores aspernatur?
-        </p>
-        <div>달력 카테고리 </div>
-      </div>
-      <div className="w-full h-40 pt-6 pb-4 text-theme-text">
-        <h2 className="font-semibold text-xl">
-          <Link href="#">This is title...!</Link>
-        </h2>
-        <p className="my-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ipsam
-          earum, ab cupiditate voluptatum, eligendi beatae suscipit provident
-          commodi quisquam voluptas consequuntur eum doloremque repellendus, quo
-          ducimus quis asperiores aspernatur?
-        </p>
-        <div>달력 카테고리 </div>
-      </div>
-      <div className="w-full h-40 pt-6 pb-4 text-theme-text">
-        <h2 className="font-semibold text-xl">
-          <Link href="#">This is title...!</Link>
-        </h2>
-        <p className="my-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ipsam
-          earum, ab cupiditate voluptatum, eligendi beatae suscipit provident
-          commodi quisquam voluptas consequuntur eum doloremque repellendus, quo
-          ducimus quis asperiores aspernatur?
-        </p>
-        <div>달력 카테고리 </div>
-      </div>
-      <div className="w-full h-40 pt-6 pb-4 text-theme-text">
-        <h2 className="font-semibold text-xl">
-          <Link href="#">This is title...!</Link>
-        </h2>
-        <p className="my-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ipsam
-          earum, ab cupiditate voluptatum, eligendi beatae suscipit provident
-          commodi quisquam voluptas consequuntur eum doloremque repellendus, quo
-          ducimus quis asperiores aspernatur?
-        </p>
-        <div>달력 카테고리 </div>
-      </div>
-      <div className="w-full h-40 pt-6 pb-4 text-theme-text">
-        <h2 className="font-semibold text-xl">
-          <Link href="#">This is title...!</Link>
-        </h2>
-        <p className="my-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ipsam
-          earum, ab cupiditate voluptatum, eligendi beatae suscipit provident
-          commodi quisquam voluptas consequuntur eum doloremque repellendus, quo
-          ducimus quis asperiores aspernatur?
-        </p>
-        <div>달력 카테고리 </div>
+      <div className="flex mt-6 ">
+        <div className="flex flex-col max-w-5xl w-full px-2">
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+        </div>
       </div>
     </MainWrapper>
   );
