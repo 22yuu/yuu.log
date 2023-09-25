@@ -1,3 +1,5 @@
+import Login from '@/components/admin/Login';
+
 export default function page() {
-  return <div>어드민 페이지</div>;
+  return <Login />;
 }
