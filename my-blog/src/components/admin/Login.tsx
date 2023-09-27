@@ -1,8 +1,8 @@
 export default function Login() {
-  const labelStyle = 'block text-sm';
-  const inputStyle = 'w-full px-5 py-1 rounded focus:outline-theme-text';
-  const buttonStyle = 'w-full px-5 py-1 bg-theme-bg rounded text-white';
-  const divideStyle = 'mb-4';
+  const labelStyle = "block text-sm";
+  const inputStyle = "w-full px-5 py-1 rounded focus:outline-theme-text";
+  const buttonStyle = "w-full px-5 py-1 bg-theme-primary rounded text-white";
+  const divideStyle = "mb-4";
   return (
     <div className="w-full h-full flex justify-center items-center">
       <form className="max-w-sm p-10 rounded shadow-xl w-full bg-gray-300 bg-opacity-25 text-theme-text">
