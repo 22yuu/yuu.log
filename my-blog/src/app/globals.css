@@ -13,6 +13,7 @@ body {
   :root {
     --color-theme-bg: 255 255 255;
     --color-theme-text: 63 63 70;
+    --color-theme-primary: 69 104 220;
   }
 
   html.dark {
