@@ -8,10 +8,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      animation: {
+        'fade-up': 'fade-up 1s ease-in-out',
+      },
+      keyframes: {
+        'fade-up': {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
+        },
       },
       colors: {
         'theme-bg': 'rgb(var(--color-theme-bg) / <alpha-value>)',
