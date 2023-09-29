@@ -39,7 +39,7 @@ export default function CategoryCard({ category }: Props) {
       </div>
       <div
         className={`w-full bg-zinc-600 rounded-b ${
-          !open && ' hidden transition-all ease-in-out duration-150'
+          open ? ' visible animate-fade-up' : 'hidden'
         }`}
       >
         <ul>
