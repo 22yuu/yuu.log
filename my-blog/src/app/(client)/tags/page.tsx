@@ -6,30 +6,39 @@ export default function page() {
     <MainWrapper>
       <Heading size={'xl'}>Tags</Heading>
       <div className="flex flex-wrap gap-2">
-        <span className="text-center leading-8 h-8 text-theme-text bg-theme-primary rounded-xl">
+        <div className="flex justify-center items-center h-8 text-theme-text bg-theme-primary rounded-xl px-2 py-2">
           JavaScript
-        </span>
-        <span className="text-center leading-8 h-8 text-theme-text bg-theme-primary rounded-xl">
-          CSS
-        </span>
-        <span className="text-center leading-8 h-8 text-theme-text bg-theme-primary rounded-xl">
-          JS
-        </span>
-        <span className="text-center leading-8 h-8 text-theme-text bg-theme-primary rounded-xl">
+        </div>
+        <div className="flex justify-center items-center h-8 text-theme-text bg-theme-primary rounded-xl px-2 py-2">
           React
-        </span>
-        <span className="text-center leading-8 h-8 text-theme-text bg-theme-primary rounded-xl">
+        </div>
+        <div className="flex justify-center items-center h-8 text-theme-text bg-theme-primary rounded-xl px-2 py-2">
+          JS
+        </div>
+        <div className="flex justify-center items-center h-8 text-theme-text bg-theme-primary rounded-xl px-2 py-2">
+          TS
+        </div>
+        <div className="flex justify-center items-center h-8 text-theme-text bg-theme-primary rounded-xl px-2 py-2">
+          ReactNative
+        </div>
+        <div className="flex justify-center items-center h-8 text-theme-text bg-theme-primary rounded-xl px-2 py-2">
           TypeScript
-        </span>
-        <span className="text-center leading-8 h-8 text-theme-text bg-theme-primary rounded-xl">
+        </div>
+        <div className="flex justify-center items-center h-8 text-theme-text bg-theme-primary rounded-xl px-2 py-2">
+          Java
+        </div>
+        <div className="flex justify-center items-center h-8 text-theme-text bg-theme-primary rounded-xl px-2 py-2">
+          Python
+        </div>
+        <div className="flex justify-center items-center h-8 text-theme-text bg-theme-primary rounded-xl px-2 py-2">
+          C#
+        </div>
+        <div className="flex justify-center items-center h-8 text-theme-text bg-theme-primary rounded-xl px-2 py-2">
+          localStorage
+        </div>
+        <div className="flex justify-center items-center h-8 text-theme-text bg-theme-primary rounded-xl px-2 py-2">
           JavaScript
-        </span>
-        <span className="text-center leading-8 h-8 text-theme-text bg-theme-primary rounded-xl">
-          JavaScript
-        </span>
-        <span className="text-center leading-8 h-8 text-theme-text bg-theme-primary rounded-xl">
-          JavaScript
-        </span>
+        </div>
       </div>
     </MainWrapper>
   );
