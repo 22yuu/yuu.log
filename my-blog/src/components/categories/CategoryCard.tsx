@@ -14,21 +14,21 @@ export default function CategoryCard({ category }: Props) {
   return (
     <div className="mb-8 flex flex-col">
       <div
-        className="flex justify-between w-full rounded-t bg-theme-primary p-3 text-theme-text cursor-pointer"
+        className="flex justify-between w-full rounded-t bg-theme-primary p-3 text-theme-text cursor-pointer border dark:border-none"
         onClick={() => setOpen(!open)}
         key={category}
       >
         <div className="flex items-center gap-2 ">
           {open ? (
-            <FolderOpenIcon className="w-5 h-5" />
+            <FolderOpenIcon className="w-5 h-5 text-zinc-500" />
           ) : (
-            <FolderCloseIcon className="w-5 h-5" />
+            <FolderCloseIcon className="w-5 h-5 text-zinc-500" />
           )}
           {category}
         </div>
-        <button className="p-1 rounded-full hover:bg-zinc-700">
+        <button className="p-1 rounded-full hover:bg-slate-200/50 dark:hover:bg-zinc-500">
           <AngleRightIcon
-            className={`transform ${
+            className={`w-4 h-4 transform ${
               open && 'rotate-90'
             } transition-transform duration-300`}
           />

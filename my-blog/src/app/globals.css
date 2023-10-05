@@ -12,12 +12,13 @@ body {
 @layer base {
   :root {
     --color-theme-bg: 255 255 255;
-    --color-theme-text: 63 63 70;
-    --color-theme-primary: 69 104 220;
+    /* --color-theme-text: 63 63 70; */
+    --color-theme-text: 0 0 0;
+    --color-theme-primary: 247 247 247;
   }
 
   html.dark {
-    --color-theme-bg: 63 63 70;
+    --color-theme-bg: 27 27 30;
     --color-theme-text: 161 161 170;
     --color-theme-primary: 51 50 50;
   }

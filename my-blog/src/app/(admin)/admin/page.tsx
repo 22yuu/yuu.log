@@ -1,5 +1,7 @@
 import Login from '@/components/admin/Login';
 
 export default function page() {
-  return <Login />;
+  const user = undefined;
+
+  return <>{!user ? <Login /> : <p>Admin Page</p>}</>;
 }

@@ -10,7 +10,7 @@ type Props = {
 export default function SubCategories({ category, open }: Props) {
   return (
     <div
-      className={`w-full bg-zinc-600 rounded-b ${
+      className={`w-full bg-white dark:bg-zinc-800 border dark:border-none rounded-b ${
         open ? ' visible animate-fade-up' : 'hidden'
       }`}
     >
