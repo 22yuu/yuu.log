@@ -1,7 +1,17 @@
 import Login from '@/components/admin/Login';
 
 export default function page() {
-  const user = false;
+  const user = true;
 
-  return <>{!user ? <Login /> : <p>Admin Page</p>}</>;
+  if (!user) {
+    return <Login />;
+  }
+
+  return (
+    <div className="flex text-theme-text">
+      {/* admin side panel */}
+      <div className="w-[200px] h-full bg-theme-primary"></div>
+      <p>Admin Page</p>
+    </div>
+  );
 }
