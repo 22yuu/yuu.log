@@ -1,4 +1,5 @@
-import Link from 'next/link';
+import Link from "next/link";
+import Calendar from "./Calendar";
 
 export default function ContentSidePanel() {
   return (
@@ -24,6 +25,8 @@ export default function ContentSidePanel() {
             </li>
           </ul>
         </div>
+
+        <Calendar />
       </div>
     </div>
   );
