@@ -32,7 +32,7 @@ export default function Calendar() {
   };
 
   return (
-    <div className="w-full mt-4 text-theme-text">
+    <div className="w-full text-theme-text my-auto">
       {/* Calendar Header */}
       <div className="flex w-full justify-between mb-4">
         <button onClick={onHandlePrevMonth}>◀︎</button>
