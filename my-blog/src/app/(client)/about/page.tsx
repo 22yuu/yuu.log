@@ -1,11 +1,25 @@
-import MainWrapper from '@/components/layouts/MainWrapper';
-import Heading from '@/components/ui/atoms/Heading';
+import MainWrapper from "@/components/layouts/MainWrapper";
+import Heading from "@/components/ui/atoms/Heading";
+import StarIcon from "@/components/ui/icons/StarIcon";
 
 export default function AboutPage() {
   return (
     <MainWrapper>
+      <section className="flex py-4">
+        <div className="w-1/2">
+          <div className="w-48 h-48 mx-auto rounded-full border border-blue-300"></div>
+        </div>
+        <div>
+          <span>끊임없이 노력・도전・열정을 다하는 개발자, 이진유</span>
+          <div>LEE JIN YU</div>
+          <div className="flex items-center gap-2">
+            <StarIcon />
+            <span>1994.05.10</span>
+          </div>
+        </div>
+      </section>
       <section className="flex flex-col gap-4">
-        <Heading size={'xl'} className="mt-12">
+        <Heading size={"xl"} className="mt-12">
           안녕하세요, 개발자 이진유입니다.
         </Heading>
         <p>

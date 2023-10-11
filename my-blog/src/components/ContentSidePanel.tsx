@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import Calendar from './Calendar';
+import Link from "next/link";
+import Calendar from "./Calendar";
 
 export default function ContentSidePanel() {
   return (
