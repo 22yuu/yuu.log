@@ -3,7 +3,7 @@ import { cva, VariantProps } from 'class-variance-authority';
 import { HTMLAttributes } from 'react';
 
 const variants = cva(
-  `font-semibold smooth duration-300 transition-all mt-12 mb-6 text-theme-text`,
+  `font-semibold smooth duration-300 transition-all text-theme-text`,
   {
     variants: {
       size: {

@@ -1,21 +1,21 @@
-"use client";
+'use client';
 import {
   startOfMonth,
   endOfMonth,
   addMonths,
   subMonths,
   format,
-} from "date-fns";
-import { useState } from "react";
+} from 'date-fns';
+import { useState } from 'react';
 
 const countColors = [
-  "bg-gray-200",
-  "bg-green-100",
-  "bg-green-200",
-  "bg-green-300",
-  "bg-green-400",
-  "bg-green-500",
-  "bg-green-600",
+  'bg-gray-100',
+  'bg-lime-100',
+  'bg-lime-200',
+  'bg-lime-300',
+  'bg-lime-400',
+  'bg-lime-500',
+  'bg-lime-600',
 ];
 
 export default function Calendar() {
@@ -34,9 +34,9 @@ export default function Calendar() {
   return (
     <div className="w-full text-theme-text my-auto">
       {/* Calendar Header */}
-      <div className="flex w-full justify-between mb-4">
+      <div className="flex w-full justify-between mb-2">
         <button onClick={onHandlePrevMonth}>◀︎</button>
-        <h2>{`${format(currentMonth, "M")}월`}</h2>
+        <h2>{`${format(currentMonth, 'M')}월`}</h2>
         <button onClick={onHandleNextMonth}>▶︎</button>
       </div>
       {/* Calendar Content */}
@@ -51,10 +51,10 @@ function getDays(start: number, end: number) {
   const mockFlatMaps = Array.from({ length: 35 }, (x) => getRandomInt(10)); // 0~28
 
   return (
-    <div className="flex flex-col gap-2 w-full p-2">
+    <div className="flex flex-col gap-1 w-full p-2">
       {mockWeeks.map((_, weekIndex) => {
         return (
-          <div key={weekIndex} className="w-full flex grow gap-2 mb-1">
+          <div key={weekIndex} className="grid grid-cols-7 gap-1">
             {mockDays.map((_, dayIndex) => {
               const flatIndex = weekIndex * 7 + dayIndex;
 
@@ -63,14 +63,17 @@ function getDays(start: number, end: number) {
                 (weekIndex === mockWeeks.length - 1 && end < dayIndex)
               ) {
                 return (
-                  <div key={dayIndex} className="grow h-4 bg-gray-200"></div>
+                  <div
+                    key={dayIndex}
+                    className="h-4 bg-transparent box-border border"
+                  ></div>
                 );
               }
 
               return (
                 <div
                   key={dayIndex}
-                  className={`grow h-4 ${
+                  className={`h-4 ${
                     mockFlatMaps[flatIndex] < countColors.length
                       ? countColors[mockFlatMaps[flatIndex]]
                       : countColors[countColors.length - 1]

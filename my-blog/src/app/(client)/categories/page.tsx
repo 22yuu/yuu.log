@@ -1,5 +1,6 @@
 import CategoryCard from '@/components/categories/CategoryCard';
 import MainWrapper from '@/components/layouts/MainWrapper';
+import Heading from '@/components/ui/atoms/Heading';
 import {
   MockCategoryKeysType,
   categoryList,
@@ -10,9 +11,9 @@ export default function CatregoriesPage() {
 
   return (
     <MainWrapper>
-      <h2 className="mt-12 mb-6 text-2xl font-semibold text-theme-text">
+      <Heading size={'xl'} className="mt-12 mb-6">
         Categories
-      </h2>
+      </Heading>
 
       <div id="categories">
         <div className="w-full ">
