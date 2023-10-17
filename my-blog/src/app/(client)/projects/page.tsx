@@ -14,7 +14,7 @@ export default function page() {
       </Heading>
       <div className="mt-12 text-theme-text">
         <ul className="relative">
-          <div className="absolute left-[80px] w-1 h-full bg-theme-primary"></div>
+          <div className="absolute left-[80px] w-1 h-full bg-theme-secondary"></div>
           <ProjectItemCard />
           <ProjectItemCard />
           <ProjectItemCard />

@@ -1,4 +1,5 @@
 import MainWrapper from '@/components/layouts/MainWrapper';
+import Tag from '@/components/ui/Tag';
 import Heading from '@/components/ui/atoms/Heading';
 
 export default function page() {
@@ -8,39 +9,15 @@ export default function page() {
         Tags
       </Heading>
       <div className="flex flex-wrap gap-2">
-        <div className="flex justify-center items-center text-sm h-3 text-theme-text bg-theme-primary rounded-lg px-4 py-3">
-          JavaScript
-        </div>
-        <div className="flex justify-center items-center text-sm h-3 text-theme-text bg-theme-primary rounded-lg px-4 py-3">
-          React
-        </div>
-        <div className="flex justify-center items-center text-sm h-3 text-theme-text bg-theme-primary rounded-lg px-4 py-3">
-          JS
-        </div>
-        <div className="flex justify-center items-center text-sm h-3 text-theme-text bg-theme-primary rounded-lg px-4 py-3">
-          TS
-        </div>
-        <div className="flex justify-center items-center text-sm h-3 text-theme-text bg-theme-primary rounded-lg px-4 py-3">
-          ReactNative
-        </div>
-        <div className="flex justify-center items-center text-sm h-3 text-theme-text bg-theme-primary rounded-lg px-4 py-3">
-          TypeScript
-        </div>
-        <div className="flex justify-center items-center text-sm h-3 text-theme-text bg-theme-primary rounded-lg px-4 py-3">
-          Java
-        </div>
-        <div className="flex justify-center items-center text-sm h-3 text-theme-text bg-theme-primary rounded-lg px-4 py-3">
-          Python
-        </div>
-        <div className="flex justify-center items-center text-sm h-3 text-theme-text bg-theme-primary rounded-lg px-4 py-3">
-          C#
-        </div>
-        <div className="flex justify-center items-center text-sm h-3 text-theme-text bg-theme-primary rounded-lg px-4 py-3">
-          localStorage
-        </div>
-        <div className="flex justify-center items-center text-sm h-3 text-theme-text bg-theme-primary rounded-lg px-4 py-3">
-          JavaScript
-        </div>
+        <Tag tagName="JavaScript" />
+        <Tag tagName="React" />
+        <Tag tagName="JS" />
+        <Tag tagName="TS" />
+        <Tag tagName="ReactNative" />
+        <Tag tagName="TypeScript" />
+        <Tag tagName="Java" />
+        <Tag tagName="Python" />
+        <Tag tagName="localStorage" />
       </div>
     </MainWrapper>
   );

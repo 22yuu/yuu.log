@@ -21,6 +21,7 @@ const config: Config = {
         'theme-bg': 'rgb(var(--color-theme-bg) / <alpha-value>)',
         'theme-text': 'rgb(var(--color-theme-text) / <alpha-value>)',
         'theme-primary': 'rgb(var(--color-theme-primary) / <alpha-value>)',
+        'theme-secondary': 'rgb(var(--color-theme-secondary) / <alpha-value>)',
       },
     },
   },
