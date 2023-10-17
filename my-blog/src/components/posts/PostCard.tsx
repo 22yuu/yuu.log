@@ -3,13 +3,14 @@ import CalendarIcon from '../ui/icons/CalendarIcon';
 import CategoryIcon from '../ui/icons/CategoryIcon';
 import Link from 'next/link';
 import Tag from '../ui/Tag';
+import Heading from '../ui/atoms/Heading';
 
 export default function PostCard() {
   return (
     <div className="w-full h-40 text-theme-text mb-8">
-      <h2 className="font-semibold text-xl">
+      <Heading size={'lg'}>
         <Link href="#">This is title...!</Link>
-      </h2>
+      </Heading>
       <p className="my-2">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ipsam
         earum, ab cupiditate voluptatum, eligendi beatae suscipit provident

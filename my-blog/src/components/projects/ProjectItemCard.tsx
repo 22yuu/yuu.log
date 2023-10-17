@@ -3,11 +3,12 @@ import ForkIcon from '../ui/icons/ForkIcon';
 import EyeIcon from '../ui/icons/EyeIcon';
 import Image from 'next/image';
 import Tag from '../ui/Tag';
+import Heading from '../ui/atoms/Heading';
 
 export default function ProjectItemCard() {
   return (
     <li className="flex min-h-[150px] mb-24">
-      <div className="flex flex-shrink-0 items-center justify-center rounded-full border-[7px] border-theme-secondary w-40 h-40 bg-white z-50">
+      <div className="flex flex-shrink-0 items-center justify-center rounded-full border-[6px] border-theme-secondary w-40 h-40 bg-white z-50">
         <Image
           className="rounded-2xl max-w-[120px] max-h-[120px]"
           src="/images/plip.png"
@@ -19,7 +20,7 @@ export default function ProjectItemCard() {
         />
       </div>
       <div className="flex flex-col p-4">
-        <h2 className="mb-2">Project Tilte</h2>
+        <Heading size={'lg'}>Project Title</Heading>
         <p className="mb-2">
           This is Project Description... What is your application service please
           explain it. and What is difficult implmentaion in your project.
