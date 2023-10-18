@@ -17,15 +17,17 @@ body {
 
 @layer base {
   :root {
-    --color-theme-bg: 255 255 255;
-    /* --color-theme-text: 63 63 70; */
-    --color-theme-text: 0 0 0;
-    --color-theme-primary: 247 247 247;
+    --color-theme-primary: 255 255 255;
+    --color-theme-secondary: 69 104 220;
+    --color-theme-text: 63 63 70;
+    /* --color-theme-text: 0 0 0; */
+    --color-theme-bg: 245 245 245;
   }
 
   html.dark {
-    --color-theme-bg: 27 27 30;
+    --color-theme-primary: 27 27 30;
+    --color-theme-secondary: 27 27 30;
     --color-theme-text: 161 161 170;
-    --color-theme-primary: 51 50 50;
+    --color-theme-bg: 51 50 50;
   }
 }

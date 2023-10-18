@@ -2,13 +2,15 @@ import React from 'react';
 import CalendarIcon from '../ui/icons/CalendarIcon';
 import CategoryIcon from '../ui/icons/CategoryIcon';
 import Link from 'next/link';
+import Tag from '../ui/Tag';
+import Heading from '../ui/atoms/Heading';
 
 export default function PostCard() {
   return (
-    <div className="w-full h-40 pt-6 pb-4 text-theme-text mb-4">
-      <h2 className="font-semibold text-xl">
+    <div className="w-full h-40 text-theme-text mb-8">
+      <Heading size={'lg'}>
         <Link href="#">This is title...!</Link>
-      </h2>
+      </Heading>
       <p className="my-2">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ipsam
         earum, ab cupiditate voluptatum, eligendi beatae suscipit provident
@@ -16,15 +18,9 @@ export default function PostCard() {
         ducimus quis asperiores aspernatur?
       </p>
       <div className="flex flex-wrap gap-2 mb-2">
-        <div className="flex justify-center items-center text-sm h-3 text-theme-text bg-theme-primary rounded-lg px-4 py-3">
-          JavaScript
-        </div>
-        <div className="flex justify-center items-center text-sm h-3 text-theme-text bg-theme-primary rounded-lg px-4 py-3">
-          React
-        </div>
-        <div className="flex justify-center items-center text-sm h-3 text-theme-text bg-theme-primary rounded-lg px-4 py-3">
-          JS
-        </div>
+        <Tag tagName="JavaScript" />
+        <Tag tagName="React" />
+        <Tag tagName="JS" />
       </div>
       <div className="flex gap-4 text-sm">
         <div className="flex items-center gap-2">
