@@ -1,18 +1,14 @@
-import express from 'express';
-import MariaDB from './database/maria.js';
-import dotenv from 'dotenv';
+import express from "express";
+import { conn } from "./config/mongo.js";
+import dotenv from "dotenv";
 
 dotenv.config();
 
 const app = express();
 const port = process.env.SERVER_PORT || 8080;
 
-// mariaDB connect
-const maria = new MariaDB();
-
-maria.initialize();
-const res = await maria.getTestData();
-console.log(res);
+// connect mongoDB client
+conn();
 
 app.listen(port, () => {
   console.log(`API server listening on port ${port}`);
