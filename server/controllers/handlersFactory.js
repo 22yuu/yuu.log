@@ -1,14 +1,14 @@
-import asynchHandler from "../utils/asyncHandler";
+import asyncHandler from "../utils/asyncHandler";
 
 const createOne = (Model) => {
-  asynchHandler(async (req, res) => {
+  asyncHandler(async (req, res) => {
     const newDoc = Model.create(req.body);
     res.status(201).json({ data: newDoc });
   });
 };
 
 const updateOne = (Model, name = "document") => {
-  asynchHandler(async (req, res, next) => {
+  asyncHandler(async (req, res, next) => {
     const { id } = req.params;
     const document = await Model.findByIdAndUpdate(id, req.body, { new: true });
 
@@ -22,8 +22,8 @@ const updateOne = (Model, name = "document") => {
   });
 };
 
-export const deleteOne = (Model, name = "document") => {
-  asynchHandler(async (req, res, next) => {
+const deleteOne = (Model, name = "document") => {
+  asyncHandler(async (req, res, next) => {
     const document = await Model.findByIdAndDelete(req.params.id);
 
     if (!document) {
@@ -35,8 +35,8 @@ export const deleteOne = (Model, name = "document") => {
   });
 };
 
-export const getOne = (Model, name = "document") => {
-  asynchHandler(async (req, res, next) => {
+const getOne = (Model, name = "document") => {
+  asyncHandler(async (req, res, next) => {
     const document = await Model.findById(req.params.id);
 
     if (!document) {
@@ -47,10 +47,12 @@ export const getOne = (Model, name = "document") => {
   });
 };
 
-export const getAll = (Model) => {
-  asynchHandler(async (req, res, next) => {
+const getAll = (Model) => {
+  asyncHandler(async (req, res, next) => {
     const document = await Model.find();
 
     res.status(200).json({ size: document.length, data: document });
   });
 };
+
+export { createOne, updateOne, getOne, getAll, deleteOne };

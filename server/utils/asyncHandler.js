@@ -1,4 +1,4 @@
-export default function asynchHandler(requestHandler) {
+export default function asyncHandler(requestHandler) {
   return async (req, res, next) => {
     try {
       await requestHandler(req, res);

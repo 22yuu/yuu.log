@@ -1,3 +1,4 @@
+// @ts-nocheck
 import mongoose from "mongoose";
 
 const PostSchema = new mongoose.Schema({
@@ -45,4 +46,4 @@ const PostSchema = new mongoose.Schema({
   ],
 });
 
-export const Post = mongoose.model("Post", PostSchema);
+export default Post = mongoose.model("Post", PostSchema);
