@@ -1,6 +1,6 @@
 // @ts-nocheck
 import User from "../model/User.js";
-import asyncHandler from "../utils/asyncHandler.js";
+import asyncHandler from "express-async-handler";
 import bcrypt from "bcrypt";
 import { createToken } from "../utils/generateToken.js";
 
@@ -15,5 +15,5 @@ export const login = asyncHandler(async (req, res, next) => {
 
   delete user._doc.password;
 
-  res.status(200).json({ toke, data: user });
+  res.status(200).json({ token, data: user });
 });
