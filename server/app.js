@@ -3,10 +3,12 @@ import { conn } from "./config/mongo.js";
 import dotenv from "dotenv";
 
 import authRouters from "./routes/Auth.js";
+import userRouters from "./routes/User.js";
 
 dotenv.config();
 
 const app = express();
+const router = express.Router();
 const port = process.env.SERVER_PORT || 8080;
 
 // connect mongoDB client
@@ -16,13 +18,12 @@ conn();
 app.use(express.json());
 
 // routes middleware
-app.use("/api/auth", authRouters);
+app.use("/admin", authRouters);
+app.use("/user", userRouters);
 
-// 404 error
-app.all("*", (req, res, next) => {
-  const err = new Error(`Can't find this route ${req.originalUrl}`);
-
-  next(err);
+router.get("/login", (req, res) => {
+  console.log("login...");
+  res.send("<h1>login!</h1>");
 });
 
 app.listen(port, () => {

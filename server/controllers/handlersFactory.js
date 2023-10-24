@@ -1,14 +1,14 @@
-import asyncHandler from "../utils/asyncHandler";
+import asyncHandler from "express-async-handler";
 
 const createOne = (Model) => {
-  asyncHandler(async (req, res) => {
-    const newDoc = Model.create(req.body);
+  return asyncHandler(async (req, res) => {
+    const newDoc = await Model.create(req.body);
     res.status(201).json({ data: newDoc });
   });
 };
 
 const updateOne = (Model, name = "document") => {
-  asyncHandler(async (req, res, next) => {
+  return asyncHandler(async (req, res, next) => {
     const { id } = req.params;
     const document = await Model.findByIdAndUpdate(id, req.body, { new: true });
 
@@ -23,7 +23,7 @@ const updateOne = (Model, name = "document") => {
 };
 
 const deleteOne = (Model, name = "document") => {
-  asyncHandler(async (req, res, next) => {
+  return asyncHandler(async (req, res, next) => {
     const document = await Model.findByIdAndDelete(req.params.id);
 
     if (!document) {
@@ -36,7 +36,7 @@ const deleteOne = (Model, name = "document") => {
 };
 
 const getOne = (Model, name = "document") => {
-  asyncHandler(async (req, res, next) => {
+  return asyncHandler(async (req, res, next) => {
     const document = await Model.findById(req.params.id);
 
     if (!document) {
@@ -48,7 +48,7 @@ const getOne = (Model, name = "document") => {
 };
 
 const getAll = (Model) => {
-  asyncHandler(async (req, res, next) => {
+  return asyncHandler(async (req, res, next) => {
     const document = await Model.find();
 
     res.status(200).json({ size: document.length, data: document });

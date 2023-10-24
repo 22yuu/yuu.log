@@ -1,5 +1,5 @@
 import Post from "../model/Post.js";
-import asyncHandler from "../utils/asyncHandler.js";
+import asyncHandler from "express-async-handler";
 
 // create post
 export const createPost = asyncHandler(async (req, res) => {
