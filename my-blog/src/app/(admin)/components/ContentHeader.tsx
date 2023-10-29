@@ -8,11 +8,8 @@ type Props = {
 };
 
 export default function ContentHeader({ title = '방문 통계' }: Props) {
-  const user = true;
+  const user = false;
 
-  if (!user) {
-    return <Login />;
-  }
   return (
     <div className="flex justify-between mb-8">
       <Heading size={'xl'}>{title}</Heading>

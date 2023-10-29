@@ -1,4 +1,4 @@
-import { FiMoon } from 'react-icons/fi';
+import { BiSolidMoon } from 'react-icons/bi';
 export default function MoonIcon() {
-  return <FiMoon className="w-5 h-5"></FiMoon>;
+  return <BiSolidMoon className="w-5 h-5"></BiSolidMoon>;
 }
