@@ -1,6 +1,6 @@
 import ToggleDarkModeBtn from '@/components/ToggleDarkModeBtn';
-import Login from '@/components/admin/Login';
 import Heading from '@/components/ui/atoms/Heading';
+import { LoginContextProps, useLoginContext } from '@/contexts/LoginProvider';
 import React from 'react';
 
 type Props = {
@@ -8,13 +8,13 @@ type Props = {
 };
 
 export default function ContentHeader({ title = '방문 통계' }: Props) {
-  const user = false;
+  const { user } = useLoginContext() as LoginContextProps;
 
   return (
     <div className="flex justify-between mb-8">
       <Heading size={'xl'}>{title}</Heading>
       <div className="flex items-center gap-4">
-        <span>Welcome! {user ? 'Admin' : 'Guest'}</span>
+        <span>안녕하세요! {user !== 'guest' ? '관리자' : 'Guest'}님</span>
         <ToggleDarkModeBtn />
       </div>
     </div>

@@ -6,12 +6,12 @@ type Props = {
   children: React.ReactNode;
 };
 
-export type ContextProps = {
+export type DarkModeContextProps = {
   dark: boolean;
   toggleDarkMode: () => void;
 };
 
-const DarkModeContext = createContext<ContextProps | null>(null);
+const DarkModeContext = createContext<DarkModeContextProps | null>(null);
 
 export default function ThemeProvider({ children }: Props) {
   const [dark, setDark] = useState(false);

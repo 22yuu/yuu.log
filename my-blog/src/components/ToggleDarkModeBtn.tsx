@@ -2,10 +2,11 @@
 
 import MoonIcon from './ui/icons/MoonIcon';
 import SunIcon from './ui/icons/SunIcon';
-import { useDarkMode, ContextProps } from '@/contexts/ThemeProvider';
+import { useDarkMode, DarkModeContextProps } from '@/contexts/ThemeProvider';
 
 const ToggleDarkModeBtn = () => {
-  const { dark: isDark, toggleDarkMode } = useDarkMode() as ContextProps;
+  const { dark: isDark, toggleDarkMode } =
+    useDarkMode() as DarkModeContextProps;
 
   return (
     <button

@@ -8,7 +8,6 @@ import {
   createAccessToken,
   createRefreshToken,
 } from '../utils/generateToken.js';
-import Token from '../model/Token.js';
 
 dotenv.config();
 
@@ -24,7 +23,7 @@ export const login = asyncHandler(async (req, res, next) => {
 
   delete user._doc.password;
 
-  console.log(user);
+  // console.log(user);
 
   res
     .cookie('refreshToken', refreshToken, {
@@ -32,6 +31,5 @@ export const login = asyncHandler(async (req, res, next) => {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
     })
-    .header('Authorization', accessToken)
-    .send(user);
+    .send({ accessToken, user });
 });

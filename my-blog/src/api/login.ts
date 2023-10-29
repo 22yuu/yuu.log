@@ -15,7 +15,6 @@ export const login = async (args: LoginRequest) => {
     body: JSON.stringify(args),
   });
 
-  console.log(res.headers.get('Authorization'));
-  console.log(res.headers.get('Set-Cookie'));
-  //   return res.ok ? 'success' : 'fail';
+  const data = await res.json();
+  return data;
 };

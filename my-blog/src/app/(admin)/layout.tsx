@@ -1,15 +1,12 @@
-import Login from '@/components/admin/Login';
+'use client';
 
-export default function AdminLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const user = false;
+import AdminLayout from './components/AdminLayout';
+import LoginProivder from '@/contexts/LoginProvider';
 
-  if (!user) {
-    return <Login />;
-  }
-
-  return <AdminLayout>{children}</AdminLayout>;
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <LoginProivder>
+      <AdminLayout>{children}</AdminLayout>
+    </LoginProivder>
+  );
 }
