@@ -4,11 +4,9 @@ import { LoginContextProps, useLoginContext } from '@/contexts/LoginProvider';
 import Login from '@/components/admin/Login';
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
-  const { user } = useLoginContext() as LoginContextProps;
+  const { user: userInfo } = (useLoginContext() as LoginContextProps) || {};
 
-  console.log(user);
-
-  if (user !== 'guest' && !user.user) {
+  if (userInfo !== 'guest' && !userInfo.user) {
     return <Login />;
   }
 

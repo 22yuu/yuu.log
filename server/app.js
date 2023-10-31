@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import authRouters from './routes/Auth.js';
 import userRouters from './routes/User.js';
 import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
@@ -29,15 +30,11 @@ app.use(
     credentials: true,
   })
 );
+app.use(cookieParser());
 
 // routes middleware
 app.use('/admin', authRouters);
 app.use('/user', userRouters);
-
-router.get('/login', (req, res) => {
-  console.log('login...');
-  res.send('<h1>login!</h1>');
-});
 
 app.listen(port, () => {
   console.log(`API server listening on port ${port}`);

@@ -1,11 +1,16 @@
+import { dummy, getAccessToken } from '@/api/auth';
 import Heading from '@/components/ui/atoms/Heading';
 import ChartIcon from '@/components/ui/icons/ChartIcon';
 import ContentIcon from '@/components/ui/icons/ContentIcon';
 import Pencil from '@/components/ui/icons/Pencil';
+import { LoginContextProps, useLoginContext } from '@/contexts/LoginProvider';
+import { UserInfo } from '@/types/user';
 import Link from 'next/link';
 import React from 'react';
 
 export default function AdminSidePanel() {
+  const { user } = useLoginContext() as LoginContextProps;
+
   return (
     <div className="fixed w-[350px] h-full bg-theme-primary transform -translate-x-full transition-transform ease-in duration-300 md:translate-x-0">
       <div className="w-full text-center mt-12">
@@ -17,6 +22,16 @@ export default function AdminSidePanel() {
           >
             <Pencil className="w-5 h-5" />글 작성하기
           </Link>
+          <button
+            className="w-full flex items-center justify-center gap-2 border border-zinc-500 rounded-xl bg-theme-secondary dark:bg-theme-primary text-white dark:text-theme-text py-2 mt-8"
+            onClick={() => {
+              if (user !== 'guest') {
+                getAccessToken();
+              }
+            }}
+          >
+            더미 테스트 버튼
+          </button>
         </div>
       </div>
       <div>
