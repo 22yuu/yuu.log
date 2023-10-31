@@ -24,7 +24,6 @@ ChartJS.register(
 );
 
 const labels = [
-  19,
   20,
   21,
   22,
@@ -53,6 +52,7 @@ const labels = [
   15,
   16,
   17,
+  18,
   '오늘',
 ];
 
