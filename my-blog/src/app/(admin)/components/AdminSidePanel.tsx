@@ -1,10 +1,9 @@
-import { dummy, getAccessToken } from '@/api/auth';
+import { getAccessToken } from '@/api/auth';
 import Heading from '@/components/ui/atoms/Heading';
 import ChartIcon from '@/components/ui/icons/ChartIcon';
 import ContentIcon from '@/components/ui/icons/ContentIcon';
 import Pencil from '@/components/ui/icons/Pencil';
 import { LoginContextProps, useLoginContext } from '@/contexts/LoginProvider';
-import { UserInfo } from '@/types/user';
 import Link from 'next/link';
 import React from 'react';
 
@@ -25,8 +24,8 @@ export default function AdminSidePanel() {
           <button
             className="w-full flex items-center justify-center gap-2 border border-zinc-500 rounded-xl bg-theme-secondary dark:bg-theme-primary text-white dark:text-theme-text py-2 mt-8"
             onClick={() => {
-              if (user !== 'guest') {
-                getAccessToken();
+              if (user.user.role !== 'guest') {
+                getAccessToken(user.accessToken!);
               }
             }}
           >
