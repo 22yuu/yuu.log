@@ -1,15 +1,20 @@
 'use client';
 
-import { login } from '@/api/login';
+import { getAccessToken, login } from '@/api/auth';
 import { LoginContextProps, useLoginContext } from '@/contexts/LoginProvider';
 import { FormEvent } from 'react';
+import { User, UserInfo } from '@/types/user';
+import { useEffect } from 'react';
 
 export default function Login() {
   const labelStyle = 'block text-sm';
   const inputStyle = 'w-full px-5 py-1 rounded focus:outline-theme-text';
-  const buttonStyle = 'w-full px-5 py-1 bg-theme-primary rounded text-white';
+  const buttonStyle = 'w-full px-5 py-1 bg-theme-secondary rounded text-white';
   const divideStyle = 'mb-4';
-  const { setUser } = useLoginContext() as LoginContextProps;
+  const {
+    user: { accessToken },
+    setUser,
+  } = useLoginContext() as LoginContextProps;
 
   const onLoginSubmitHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -20,18 +25,23 @@ export default function Login() {
       username: formData.get('username') as string,
       password: formData.get('password') as string,
     });
-
-    if (!loginRes) {
-      alert('로그인 실패...');
-      return;
-    }
-
-    console.log(loginRes);
+    // .catch((e) => {
+    // catch로 잡으니까 AdminLayout에서 undefined 에러 발생...
+    //   console.error(e);
+    //   alert('로그인 실패...!');
+    //   setUser({} as UserInfo);
+    // });
     setUser(loginRes);
+    localStorage.setItem('isLogined', 'true');
   };
 
   const onGuestLoginHandler = () => {
-    setUser('guest');
+    const guestInfo: User = {
+      username: 'Guest',
+      role: 'guest',
+    };
+    setUser({ user: guestInfo });
+    localStorage.setItem('isGuest', 'true');
   };
 
   return (

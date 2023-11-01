@@ -1,3 +1,5 @@
+'use client';
+
 import ContentHeader from '@/app/(admin)/components/ContentHeader';
 
 export default function page() {

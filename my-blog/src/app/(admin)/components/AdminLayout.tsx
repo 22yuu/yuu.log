@@ -1,14 +1,34 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import AdminSidePanel from './AdminSidePanel';
 import { LoginContextProps, useLoginContext } from '@/contexts/LoginProvider';
 import Login from '@/components/admin/Login';
+import { getAccessToken } from '@/api/auth';
+import { UserInfo } from '@/types/user';
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
-  const { user } = useLoginContext() as LoginContextProps;
+  const {
+    user: { accessToken, user },
+    setUser,
+  } = (useLoginContext() as LoginContextProps) || {};
+  const isLogined = localStorage.getItem('isLogined');
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const getToken = async () => {
+      const user = await getAccessToken(accessToken!);
+      console.log(user);
+      return user;
+    };
+
+    getToken().then((userInfo: UserInfo) => {
+      setUser(userInfo);
+      setLoading(!loading);
+    });
+  }, []);
 
   console.log(user);
 
-  if (user !== 'guest' && !user.user) {
+  if (!user && !isLogined) {
     return <Login />;
   }
 
@@ -18,7 +38,8 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
         {/* admin side panel */}
         <AdminSidePanel />
         {/* contents */}
-        {children}
+        {!loading && 'loading...'}
+        {loading && children}
       </div>
     </div>
   );
