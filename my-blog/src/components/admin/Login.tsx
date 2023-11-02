@@ -4,6 +4,7 @@ import { login } from '@/api/auth';
 import { LoginContextProps, useLoginContext } from '@/contexts/LoginProvider';
 import { FormEvent } from 'react';
 import { User, UserInfo } from '@/types/user';
+import Link from 'next/link';
 
 export default function Login() {
   const labelStyle = 'block text-sm';
@@ -56,7 +57,7 @@ export default function Login() {
   };
 
   return (
-    <div className="w-full h-full flex justify-center items-center">
+    <div className="w-full h-full flex flex-col justify-center items-center">
       <form
         className="max-w-sm p-10 rounded shadow-xl w-full bg-gray-300 bg-opacity-25 text-theme-text"
         onSubmit={onLoginSubmitHandler}
@@ -91,6 +92,9 @@ export default function Login() {
           </button>
         </div>
       </form>
+      <Link href="/" className="mt-8 text-theme-text">
+        블로그로 돌아가기
+      </Link>
     </div>
   );
 }
