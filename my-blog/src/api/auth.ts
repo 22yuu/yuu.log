@@ -22,7 +22,17 @@ export const login = async (args: LoginRequest) => {
 };
 
 // 로그아웃
-export const logout = async () => {};
+export const logout = async () => {
+  const res = await fetch(`${BASE_URL}/admin/logout`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+  });
+
+  return res;
+};
 
 // Access Token 만료 혹은 새로고침 시 토큰 재발급 함수
 export const getAccessToken = async (token: string) => {

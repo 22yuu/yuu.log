@@ -1,29 +1,37 @@
 'use client';
 
-import { getAccessToken, login } from '@/api/auth';
+import { login } from '@/api/auth';
 import { LoginContextProps, useLoginContext } from '@/contexts/LoginProvider';
 import { FormEvent } from 'react';
-import { User, UserInfo } from '@/types/user';
-import { useEffect } from 'react';
+import { User } from '@/types/user';
 
 export default function Login() {
   const labelStyle = 'block text-sm';
   const inputStyle = 'w-full px-5 py-1 rounded focus:outline-theme-text';
   const buttonStyle = 'w-full px-5 py-1 bg-theme-secondary rounded text-white';
   const divideStyle = 'mb-4';
-  const {
-    user: { accessToken },
-    setUser,
-  } = useLoginContext() as LoginContextProps;
+  const { setUser, setLoginLoading } = useLoginContext() as LoginContextProps;
 
   const onLoginSubmitHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const formData = new FormData(event?.currentTarget);
+    const username = formData.get('username') as string;
+    const password = formData.get('password') as string;
+
+    if (username === '') {
+      alert('아이디를 입력해주세요...!');
+      return;
+    }
+
+    if (password === '') {
+      alert('비밀번호를 입력해주세요...!');
+      return;
+    }
 
     const loginRes = await login({
-      username: formData.get('username') as string,
-      password: formData.get('password') as string,
+      username,
+      password,
     });
     // .catch((e) => {
     // catch로 잡으니까 AdminLayout에서 undefined 에러 발생...
@@ -32,6 +40,7 @@ export default function Login() {
     //   setUser({} as UserInfo);
     // });
     setUser(loginRes);
+    setLoginLoading(true);
     localStorage.setItem('isLogined', 'true');
   };
 
@@ -41,6 +50,7 @@ export default function Login() {
       role: 'guest',
     };
     setUser({ user: guestInfo });
+    setLoginLoading(true);
     localStorage.setItem('isGuest', 'true');
   };
 
