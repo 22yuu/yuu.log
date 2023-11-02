@@ -3,7 +3,7 @@
 import { login } from '@/api/auth';
 import { LoginContextProps, useLoginContext } from '@/contexts/LoginProvider';
 import { FormEvent } from 'react';
-import { User } from '@/types/user';
+import { User, UserInfo } from '@/types/user';
 
 export default function Login() {
   const labelStyle = 'block text-sm';
@@ -32,16 +32,17 @@ export default function Login() {
     const loginRes = await login({
       username,
       password,
+    }).catch((e) => {
+      // catch로 잡으니까 AdminLayout에서 undefined 에러 발생...
+      // console.error(e);
+      alert('올바르지 않은 비밀번호 입니다...!');
     });
-    // .catch((e) => {
-    // catch로 잡으니까 AdminLayout에서 undefined 에러 발생...
-    //   console.error(e);
-    //   alert('로그인 실패...!');
-    //   setUser({} as UserInfo);
-    // });
-    setUser(loginRes);
-    setLoginLoading(true);
-    localStorage.setItem('isLogined', 'true');
+
+    if (loginRes) {
+      setUser(loginRes);
+      setLoginLoading(true);
+      localStorage.setItem('isLogined', 'true');
+    }
   };
 
   const onGuestLoginHandler = () => {

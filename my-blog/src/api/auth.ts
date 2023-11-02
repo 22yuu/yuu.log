@@ -17,6 +17,10 @@ export const login = async (args: LoginRequest) => {
     cache: 'no-store',
   });
 
+  if (!res.ok && res.status === 500) {
+    throw new Error('Invalid Password...!');
+  }
+
   const data = await res.json();
   return data;
 };

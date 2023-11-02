@@ -14,17 +14,26 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     setUser,
   } = (useLoginContext() as LoginContextProps) || {};
   const isLogined = localStorage.getItem('isLogined');
+  const isGuest = localStorage.getItem('isGuest');
 
   useEffect(() => {
     const getToken = async () => {
       const user = await getAccessToken(accessToken!);
-      console.log(user);
       return user;
     };
 
     if (isLogined) {
       getToken().then((userInfo: UserInfo) => {
         setUser(userInfo);
+      });
+    }
+
+    if (isGuest) {
+      setUser({
+        user: {
+          username: 'Guest',
+          role: 'guest',
+        },
       });
     }
   }, []);
