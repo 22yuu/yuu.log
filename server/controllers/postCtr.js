@@ -1,15 +1,15 @@
-import Post from "../model/Post.js";
-import asyncHandler from "express-async-handler";
+import Post from '../model/Post.js';
+import asyncHandler from 'express-async-handler';
 
 // create post
-export const createPost = asyncHandler(async (req, res) => {
+export const writePost = asyncHandler(async (req, res) => {
   const post = await Post.create(req.body);
 
   res.status(201).send({ data: post });
 });
 
 // update post
-export const updatePost = asyncHandler(async (req, res, next) => {
+export const editPost = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
   const post = await Post.findById(id);
 
