@@ -39,7 +39,17 @@ export const login = asyncHandler(async (req, res, next) => {
     .send({ accessToken, user });
 });
 
-export const logout = asyncHandler(async (req, res, next) => {});
+export const logout = asyncHandler(async (req, res, next) => {
+  const refreshToken = req.cookies['refreshToken'];
+
+  if (refreshToken === 'undefined') {
+    return res.status(400).send('No refresh Token...!');
+  }
+
+  res.clearCookie('refreshToken');
+
+  return res.status(200).send('Successfully logged out...!');
+});
 
 // access 토큰 만료 시 재발급
 export const reissueAccesToken = asyncHandler(async (req, res, next) => {

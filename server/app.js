@@ -4,14 +4,14 @@ import { conn } from './config/mongo.js';
 import dotenv from 'dotenv';
 
 import authRouters from './routes/Auth.js';
-import userRouters from './routes/User.js';
+import postRouters from './routes/Post.js';
+
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
 const app = express();
-const router = express.Router();
 const port = process.env.SERVER_PORT || 8080;
 
 // connect mongoDB client
@@ -34,7 +34,7 @@ app.use(cookieParser());
 
 // routes middleware
 app.use('/admin', authRouters);
-app.use('/user', userRouters);
+app.use('/post', postRouters);
 
 app.listen(port, () => {
   console.log(`API server listening on port ${port}`);

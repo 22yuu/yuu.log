@@ -4,6 +4,7 @@ import FolderIcon from '@/components/ui/icons/FolderIcon';
 import HomeIcon from '@/components/ui/icons/HomeIcon';
 import TagIcon from '@/components/ui/icons/TagIcon';
 import ProjectsIcon from '@/components/ui/icons/ProjectsIcon';
+import AdminPageIcon from '@/components/ui/icons/AdminPageIcon';
 
 export type MenuList = {
   [key: string]:
@@ -60,5 +61,10 @@ export const menus: MenuObject[] = [
     href: '/portfolio',
     icon: <FolderIcon />,
     text: 'portfolio',
+  },
+  {
+    href: '/admin',
+    icon: <AdminPageIcon />,
+    text: 'AdminPage',
   },
 ];

@@ -1,0 +1,92 @@
+[
+  {
+    "_id": 0,
+    "title": "2023년 한해 동안 배운 기술들, 생각들 정리...!",
+    "body": "An annual review, or a year-end review, is the process of evaluating employee performance over the past year. Annual reviews are typically done by managers, but can also be self-conducted.",
+    "category": "Daily",
+    "subCategory": "정리",
+    "tags": ["JavaScript", "React", "NextJS"],
+    "createdAt": "2023-11-03",
+    "updatedAt": "2023-11-03"
+  },
+  {
+    "_id": 1,
+    "title": "자바스크립트 기초 문법",
+    "body": "JavaScript (JS) is a lightweight, interpreted, or just-in-time compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as Node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, single-threaded, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles. Read more about JavaScript.",
+    "category": "Daily",
+    "subCategory": "정리",
+    "tags": ["JavaScript", "React", "NextJS"],
+    "createdAt": "2023-11-03",
+    "updatedAt": "2023-11-03"
+  },
+  {
+    "_id": 2,
+    "title": "자바스크립트 10가지 프로팁!",
+    "body": "This guide assumes you have the following basic background: A general understanding of the Internet and the World Wide Web (WWW). Good working knowledge of HyperText Markup Language (HTML). Some programming experience. If you are new to programming, try one of the tutorials linked on the main page about JavaScript. Where to find JavaScript information The JavaScript documentation on MDN includes the following:",
+    "category": "Daily",
+    "subCategory": "정리",
+    "tags": ["JavaScript", "React", "NextJS"],
+    "createdAt": "2023-11-03",
+    "updatedAt": "2023-11-03"
+  },
+  {
+    "_id": 3,
+    "title": "2023년 한해 동안 배운 기술들, 생각들 정리...!",
+    "body": "An annual review, or a year-end review, is the process of evaluating employee performance over the past year. Annual reviews are typically done by managers, but can also be self-conducted.",
+    "category": "Daily",
+    "subCategory": "정리",
+    "tags": ["JavaScript", "React", "NextJS"],
+    "createdAt": "2023-11-03",
+    "updatedAt": "2023-11-03"
+  },
+  {
+    "_id": 4,
+    "title": "자바스크립트 기초 문법",
+    "body": "JavaScript (JS) is a lightweight, interpreted, or just-in-time compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as Node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, single-threaded, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles. Read more about JavaScript.",
+    "category": "Daily",
+    "subCategory": "정리",
+    "tags": ["JavaScript", "React", "NextJS"],
+    "createdAt": "2023-11-03",
+    "updatedAt": "2023-11-03"
+  },
+  {
+    "_id": 5,
+    "title": "자바스크립트 10가지 프로팁!",
+    "body": "This guide assumes you have the following basic background: A general understanding of the Internet and the World Wide Web (WWW). Good working knowledge of HyperText Markup Language (HTML). Some programming experience. If you are new to programming, try one of the tutorials linked on the main page about JavaScript. Where to find JavaScript information The JavaScript documentation on MDN includes the following:",
+    "category": "Daily",
+    "subCategory": "정리",
+    "tags": ["JavaScript", "React", "NextJS"],
+    "createdAt": "2023-11-03",
+    "updatedAt": "2023-11-03"
+  },
+  {
+    "_id": 6,
+    "title": "2023년 한해 동안 배운 기술들, 생각들 정리...!",
+    "body": "An annual review, or a year-end review, is the process of evaluating employee performance over the past year. Annual reviews are typically done by managers, but can also be self-conducted.",
+    "category": "Daily",
+    "subCategory": "정리",
+    "tags": ["JavaScript", "React", "NextJS"],
+    "createdAt": "2023-11-03",
+    "updatedAt": "2023-11-03"
+  },
+  {
+    "_id": 7,
+    "title": "자바스크립트 기초 문법",
+    "body": "JavaScript (JS) is a lightweight, interpreted, or just-in-time compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as Node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, single-threaded, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles. Read more about JavaScript.",
+    "category": "Daily",
+    "subCategory": "정리",
+    "tags": ["JavaScript", "React", "NextJS"],
+    "createdAt": "2023-11-03",
+    "updatedAt": "2023-11-03"
+  },
+  {
+    "_id": 8,
+    "title": "자바스크립트 10가지 프로팁!",
+    "body": "This guide assumes you have the following basic background: A general understanding of the Internet and the World Wide Web (WWW). Good working knowledge of HyperText Markup Language (HTML). Some programming experience. If you are new to programming, try one of the tutorials linked on the main page about JavaScript. Where to find JavaScript information The JavaScript documentation on MDN includes the following:",
+    "category": "Daily",
+    "subCategory": "정리",
+    "tags": ["JavaScript", "React", "NextJS"],
+    "createdAt": "2023-11-03",
+    "updatedAt": "2023-11-03"
+  }
+]
