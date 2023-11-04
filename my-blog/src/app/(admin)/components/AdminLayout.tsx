@@ -1,3 +1,5 @@
+'use client';
+
 import { ReactNode, useEffect, useState } from 'react';
 import AdminSidePanel from './AdminSidePanel';
 import { LoginContextProps, useLoginContext } from '@/contexts/LoginProvider';
@@ -8,25 +10,33 @@ import { UserInfo } from '@/types/user';
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const {
     user: { accessToken, user },
+    loginLoading,
     setUser,
   } = (useLoginContext() as LoginContextProps) || {};
   const isLogined = localStorage.getItem('isLogined');
-  const [loading, setLoading] = useState(false);
+  const isGuest = localStorage.getItem('isGuest');
 
   useEffect(() => {
     const getToken = async () => {
       const user = await getAccessToken(accessToken!);
-      console.log(user);
       return user;
     };
 
-    getToken().then((userInfo: UserInfo) => {
-      setUser(userInfo);
-      setLoading(!loading);
-    });
-  }, []);
+    if (isLogined) {
+      getToken().then((userInfo: UserInfo) => {
+        setUser(userInfo);
+      });
+    }
 
-  console.log(user);
+    if (isGuest) {
+      setUser({
+        user: {
+          username: 'Guest',
+          role: 'guest',
+        },
+      });
+    }
+  }, []);
 
   if (!user && !isLogined) {
     return <Login />;
@@ -35,11 +45,16 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
     <div className="flex w-full h-full">
       <div className="flex w-full h-full text-theme-text">
-        {/* admin side panel */}
-        <AdminSidePanel />
-        {/* contents */}
-        {!loading && 'loading...'}
-        {loading && children}
+        {loginLoading ? (
+          <>
+            {/* admin side panel */}
+            <AdminSidePanel />
+            {/* contents */}
+            {children}
+          </>
+        ) : (
+          'loading...!'
+        )}
       </div>
     </div>
   );

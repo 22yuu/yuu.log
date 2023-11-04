@@ -24,6 +24,8 @@ export const isExpired = (token) => {
   const current = new Date().getTime();
   const decode = verifyToken(token);
 
+  console.log(`${decode.exp * 1000} / ${current}`);
+
   if (decode.exp * 1000 < current) {
     // expired token
     console.log('Token expired');
