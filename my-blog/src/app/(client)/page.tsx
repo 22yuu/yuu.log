@@ -1,9 +1,9 @@
-import { getFakePosts } from '@/api/post';
+import { getFakeAllPosts } from '@/api/post';
 import MainWrapper from '@/components/layouts/MainWrapper';
 import PostCard from '@/components/posts/PostCard';
 
 export default async function HomePage() {
-  const posts = await getFakePosts();
+  const posts = await getFakeAllPosts();
 
   return (
     <MainWrapper>
