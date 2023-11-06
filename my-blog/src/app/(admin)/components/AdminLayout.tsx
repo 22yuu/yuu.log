@@ -11,8 +11,10 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   const {
     user: { accessToken, user },
     loginLoading,
+    setLoginLoading,
     setUser,
   } = (useLoginContext() as LoginContextProps) || {};
+
   const isLogined = localStorage.getItem('isLogined');
   const isGuest = localStorage.getItem('isGuest');
 
@@ -24,7 +26,9 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
 
     if (isLogined) {
       getToken().then((userInfo: UserInfo) => {
+        console.log(userInfo);
         setUser(userInfo);
+        setLoginLoading(true);
       });
     }
 
@@ -35,6 +39,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
           role: 'guest',
         },
       });
+      setLoginLoading(true);
     }
   }, []);
 

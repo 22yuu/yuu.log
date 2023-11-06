@@ -1,3 +1,5 @@
+import MainWrapper from '@/components/layouts/MainWrapper';
+
 type Props = {
   params: {
     slug: string;
@@ -5,5 +7,5 @@ type Props = {
 };
 
 export default function CategorytPage({ params: { slug } }: Props) {
-  return <div>{slug}</div>;
+  return <MainWrapper>{slug}</MainWrapper>;
 }
