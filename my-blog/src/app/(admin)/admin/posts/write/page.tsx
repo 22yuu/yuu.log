@@ -5,55 +5,43 @@ import ContentHeader from '@/app/(admin)/components/ContentHeader';
 import MarkdownViewer from '@/components/MarkdownViewer';
 import Heading from '@/components/ui/atoms/Heading';
 import { LoginContextProps, useLoginContext } from '@/contexts/LoginProvider';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export default function WritePage() {
   const {
     user: { accessToken },
   } = useLoginContext() as LoginContextProps;
   const ref = useRef<HTMLDivElement | null>(null);
-  const [text, setText] = useState(ref.current?.innerHTML);
-  const [imgData, setImgData] = useState();
+  const [markdown, setMarkDown] = useState('');
+  const [imgSrc, setImgSrc] = useState('');
 
   const onSubmitHandler = async () => {
     // const res = await writePost(accessToken!, text!);
   };
 
   const onInputTextHandler = (e: React.ChangeEvent<HTMLDivElement>) => {
-    // console.log(ref.current?.innerText);
-    console.log(text);
-    setText(ref.current?.innerText);
+    setMarkDown(ref.current?.innerHTML as string);
   };
 
-  /* const pasteImage = async () => {
-    try {
-      const clippedItems = await navigator.clipboard.read();
-
-      console.log(clippedItems);
-      console.log(clippedItems[0]);
-      // const blob = await clippedItems[0].getType('image');
-      // const data = URL.createObjectURL(blob);
-      // setImgData(data);
-    } catch (e) {
-      console.log(e);
-    }
-  }; */
-
-  const onPasteImageHandler = (e: any) => {
+  const onPasteImageHandler = async (e: any) => {
     e.preventDefault();
     const item = e.clipboardData.items[0];
-    // console.log(item);
-    // console.log(item.type.includes('image'));
 
     if (item.type.includes('image')) {
-      const blob = item.getAsFile();
-      console.log(blob);
-      const data = URL.createObjectURL(blob);
-      console.log(data);
-      const file = new File([data], 'image', { ...blob });
-      console.log(file);
+      // 클립보드로부터 이미지를 가져오는 방법 1
+      const imgSrc = URL.createObjectURL(await item.getAsFile());
+      ref.current!.innerHTML += `<div><img src="${imgSrc}"></div>`;
+      // URL.revokeObjectURL(imgSrc);
 
-      ref.current!.innerHTML = `<img src=${data}/>`;
+      // 클립보드로부터 이미지를 가져오는 방법 2
+      // const reader = new FileReader();
+
+      // reader.onload = (e) => {
+      //   console.log('image loaded!!!');
+      //   ref.current!.innerHTML += `<div><img src=${e.target?.result} ></div>`;
+      // };
+
+      // reader.readAsDataURL(item.getAsFile());
     }
   };
 
@@ -74,7 +62,7 @@ export default function WritePage() {
         </div>
         <div>
           <Heading size="sm">미리보기</Heading>
-          {text && <MarkdownViewer content={text} />}
+          {markdown && <MarkdownViewer content={markdown} />}
         </div>
       </div>
       <button className="self-end" onClick={onSubmitHandler}>

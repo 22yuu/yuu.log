@@ -14,6 +14,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     setLoginLoading,
     setUser,
   } = (useLoginContext() as LoginContextProps) || {};
+
   const isLogined = localStorage.getItem('isLogined');
   const isGuest = localStorage.getItem('isGuest');
 
