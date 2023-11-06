@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import CalendarIcon from '../ui/icons/CalendarIcon';
 import CategoryIcon from '../ui/icons/CategoryIcon';
@@ -13,7 +15,7 @@ export default function PostCard({
 }: Props) {
   return (
     <Link href={`/posts/${_id}`}>
-      <article className="w-full h-40 text-theme-text mb-8">
+      <div className="w-full h-40 text-theme-text mb-8">
         <Heading size={'lg'}>
           <Link href="#">{title}</Link>
         </Heading>
@@ -35,7 +37,7 @@ export default function PostCard({
             <span>{`${category}, ${subCategory}`}</span>
           </div>
         </div>
-      </article>
+      </div>
     </Link>
   );
 }
