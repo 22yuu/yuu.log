@@ -2,6 +2,7 @@ import { Post } from '@/types/posts';
 import { BASE_URL } from './const';
 import path from 'path';
 import { readFile } from 'fs/promises';
+import { writeFile } from 'fs';
 
 export const writePost = async (token: string, data: string) => {
   const res = await fetch(`${BASE_URL}/post/write`, {
