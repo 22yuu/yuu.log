@@ -1,7 +1,6 @@
 'use client';
 
 import ContentHeader from '@/app/(admin)/components/ContentHeader';
-import MarkdownViewer from '@/components/MarkdownViewer';
 import MarkdownIt from 'markdown-it';
 import Heading from '@/components/ui/atoms/Heading';
 import { LoginContextProps, useLoginContext } from '@/contexts/LoginProvider';
@@ -14,6 +13,8 @@ export default function WritePage() {
   const editorRef = useRef<HTMLDivElement | null>(null);
   const previewRef = useRef<HTMLDivElement | null>(null);
   const [markdown, setMarkDown] = useState('');
+  const [preview, setPreview] = useState('');
+
   const mdParser = new MarkdownIt({
     html: false,
     linkify: true,
@@ -27,18 +28,25 @@ export default function WritePage() {
   const onInputTextHandler = (e: React.ChangeEvent<HTMLDivElement>) => {
     setMarkDown(editorRef.current?.innerText as string);
     if (markdown.length > 0) {
-      previewRef.current!.innerHTML = mdParser.render(markdown);
+      // previewRef.current!.innerHTML = mdParser.render(markdown);
+      setPreview(mdParser.render(markdown));
     }
   };
 
-  const onPasteImageHandler = async (e: any) => {
+  const onPasteHandler = async (e: any) => {
     e.preventDefault();
+    const doc = editorRef.current?.ownerDocument.defaultView;
+    const sel = doc?.getSelection(); // getSelection: caret의 현재 위치 또는 유저가 선택한 text의 길이
+    const range = sel?.getRangeAt(0);
     const item = e.clipboardData.items[0];
 
     if (item.type.includes('image')) {
       // 클립보드로부터 이미지를 가져오는 방법 1
       const imgSrc = URL.createObjectURL(await item.getAsFile());
-      editorRef.current!.innerText += `![](${imgSrc})`;
+
+      const imageNode = document.createTextNode(`![](${imgSrc})`);
+      range?.insertNode(imageNode);
+
       // URL.revokeObjectURL(imgSrc);
 
       // 클립보드로부터 이미지를 가져오는 방법 2
@@ -50,6 +58,31 @@ export default function WritePage() {
       // };
 
       // reader.readAsDataURL(item.getAsFile());
+    } else {
+      item.getAsString((str: string) => {
+        const text = document.createTextNode(str);
+        // sel?.removeAllRanges();
+        range?.deleteContents();
+        range?.insertNode(text);
+        console.log(sel?.getRangeAt(0));
+      });
+    }
+  };
+
+  const onKeyDownHandler = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      const doc = editorRef.current?.ownerDocument.defaultView;
+      const sel = doc?.getSelection(); // getSelection: caret의 현재 위치 또는 유저가 선택한 text의 길이
+      const range = sel?.getRangeAt(0);
+
+      const tabNode = document.createTextNode('\u00a0\u00a0\u00a0\u00a0');
+      range?.insertNode(tabNode);
+
+      range?.setStartAfter(tabNode);
+      range?.setEndAfter(tabNode);
+      sel?.removeAllRanges();
+      sel?.addRange(range as Range);
     }
   };
 
@@ -59,23 +92,33 @@ export default function WritePage() {
       <div className="flex w-full">
         <div className="w-[50%] mr-8">
           <div
+            id="editor"
             ref={editorRef}
             className="w-full h-full bg-transparent outline-none"
             contentEditable={true}
             placeholder="포스트 내용 입력하기"
             onInput={onInputTextHandler}
             spellCheck={false}
-            onPaste={onPasteImageHandler}
+            onPaste={onPasteHandler}
+            onKeyDown={onKeyDownHandler}
           />
         </div>
         <div>
           <Heading size="sm">미리보기</Heading>
           {markdown && (
-            <div ref={previewRef} className="prose text-theme-text"></div>
+            <div
+              ref={previewRef}
+              contentEditable={false}
+              dangerouslySetInnerHTML={{ __html: preview }}
+              className="prose text-theme-text"
+            ></div>
           )}
         </div>
       </div>
-      <button className="self-end" onClick={onSubmitHandler}>
+      <button
+        className="w-52 absolute bottom-6 flex items-center justify-center gap-2 border border-zinc-500 rounded-xl bg-theme-secondary dark:bg-theme-primary text-white dark:text-theme-text py-2"
+        onClick={onSubmitHandler}
+      >
         작성하기
       </button>
     </div>
