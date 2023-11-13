@@ -3,9 +3,10 @@ import asyncHandler from 'express-async-handler';
 
 // create post
 export const writePost = asyncHandler(async (req, res) => {
-  const post = await Post.create(req.body);
+  console.log(req.body);
+  // const post = await Post.create(req.body);
 
-  res.status(201).send({ data: post });
+  // res.status(201).send({ data: post });
 });
 
 // update post

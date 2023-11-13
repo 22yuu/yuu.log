@@ -5,6 +5,7 @@ import MarkdownIt from 'markdown-it';
 import Heading from '@/components/ui/atoms/Heading';
 import { LoginContextProps, useLoginContext } from '@/contexts/LoginProvider';
 import { useState, useRef } from 'react';
+import { writePost } from '@/api/post';
 
 export default function WritePage() {
   const {
@@ -12,6 +13,7 @@ export default function WritePage() {
   } = useLoginContext() as LoginContextProps;
   const editorRef = useRef<HTMLDivElement | null>(null);
   const previewRef = useRef<HTMLDivElement | null>(null);
+  const [title, setTitle] = useState('');
   const [markdown, setMarkDown] = useState('');
   const [preview, setPreview] = useState('');
 
@@ -22,15 +24,31 @@ export default function WritePage() {
   });
 
   const onSubmitHandler = async () => {
-    // const res = await writePost(accessToken!, text!);
+    const res = await writePost(accessToken!, markdown!);
+  };
+
+  const onInputTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle((prev) => {
+      const mdTitle = `# ${e.target.value}\n`;
+      setPreview((prev) => {
+        console.log(mdTitle);
+        return mdParser.render(mdTitle);
+      });
+
+      onInputTextHandler(e);
+
+      return e.target.value;
+    });
   };
 
   const onInputTextHandler = (e: React.ChangeEvent<HTMLDivElement>) => {
-    setMarkDown(editorRef.current?.innerText as string);
-    if (markdown.length > 0) {
-      // previewRef.current!.innerHTML = mdParser.render(markdown);
-      setPreview(mdParser.render(markdown));
-    }
+    setMarkDown((prev) => {
+      const mdTitle = `# ${title}\n`;
+      setPreview(
+        mdParser.render((mdTitle + editorRef.current?.innerText) as string)
+      );
+      return editorRef.current?.innerText as string;
+    });
   };
 
   const onPasteHandler = async (e: any) => {
@@ -45,6 +63,10 @@ export default function WritePage() {
       const imgSrc = URL.createObjectURL(await item.getAsFile());
 
       const imageNode = document.createTextNode(`![](${imgSrc})`);
+      // setPreview((prev) => {
+      //   return mdParser.render(prev + `![](${imgSrc})`);
+      // });
+
       range?.insertNode(imageNode);
 
       // URL.revokeObjectURL(imgSrc);
@@ -67,6 +89,8 @@ export default function WritePage() {
         console.log(sel?.getRangeAt(0));
       });
     }
+
+    onInputTextHandler(e);
   };
 
   const onKeyDownHandler = (e: React.KeyboardEvent<HTMLDivElement>) => {
@@ -91,6 +115,12 @@ export default function WritePage() {
       <ContentHeader title="글 작성하기" />
       <div className="flex w-full">
         <div className="w-[50%] mr-8">
+          <input
+            className="w-full outline-none bg-transparent text-2xl mb-8"
+            value={title}
+            onChange={onInputTitle}
+            placeholder="포스트 제목을 입력해주세요."
+          ></input>
           <div
             id="editor"
             ref={editorRef}
@@ -105,7 +135,7 @@ export default function WritePage() {
         </div>
         <div>
           <Heading size="sm">미리보기</Heading>
-          {markdown && (
+          {preview && (
             <div
               ref={previewRef}
               contentEditable={false}
