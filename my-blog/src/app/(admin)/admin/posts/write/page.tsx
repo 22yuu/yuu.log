@@ -2,10 +2,10 @@
 
 import ContentHeader from '@/app/(admin)/components/ContentHeader';
 import MarkdownIt from 'markdown-it';
-import Heading from '@/components/ui/atoms/Heading';
 import { LoginContextProps, useLoginContext } from '@/contexts/LoginProvider';
 import { useState, useRef } from 'react';
 import { writePost } from '@/api/post';
+import { useRouter } from 'next/navigation';
 
 export default function WritePage() {
   const {
@@ -14,8 +14,11 @@ export default function WritePage() {
   const editorRef = useRef<HTMLDivElement | null>(null);
   const previewRef = useRef<HTMLDivElement | null>(null);
   const [title, setTitle] = useState('');
+  const [textBody, setTextBody] = useState('');
   const [markdown, setMarkDown] = useState('');
   const [preview, setPreview] = useState('');
+
+  const router = useRouter();
 
   const mdParser = new MarkdownIt({
     html: false,
@@ -30,10 +33,7 @@ export default function WritePage() {
   const onInputTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle((prev) => {
       const mdTitle = `# ${e.target.value}\n`;
-      setPreview((prev) => {
-        console.log(mdTitle);
-        return mdParser.render(mdTitle);
-      });
+      setPreview(mdParser.render(mdTitle));
 
       onInputTextHandler(e);
 
@@ -42,11 +42,12 @@ export default function WritePage() {
   };
 
   const onInputTextHandler = (e: React.ChangeEvent<HTMLDivElement>) => {
-    setMarkDown((prev) => {
+    setTextBody((prev) => {
       const mdTitle = `# ${title}\n`;
       setPreview(
         mdParser.render((mdTitle + editorRef.current?.innerText) as string)
       );
+      setMarkDown((mdTitle + editorRef.current?.innerText) as string);
       return editorRef.current?.innerText as string;
     });
   };
@@ -113,8 +114,8 @@ export default function WritePage() {
   return (
     <div className="w-full px-16 mt-12 md:ml-[350px]">
       <ContentHeader title="글 작성하기" />
-      <div className="flex w-full">
-        <div className="w-[50%] mr-8">
+      <div className="flex w-full h-[calc(100%-176px)]">
+        <div className="flex-1 mr-8">
           <input
             className="w-full outline-none bg-transparent text-2xl mb-8"
             value={title}
@@ -124,7 +125,7 @@ export default function WritePage() {
           <div
             id="editor"
             ref={editorRef}
-            className="w-full h-full bg-transparent outline-none"
+            className="w-full h-[90%] bg-transparent outline-none overflow-auto"
             contentEditable={true}
             placeholder="포스트 내용 입력하기"
             onInput={onInputTextHandler}
@@ -133,24 +134,31 @@ export default function WritePage() {
             onKeyDown={onKeyDownHandler}
           />
         </div>
-        <div>
-          <Heading size="sm">미리보기</Heading>
+        <div className="flex-1">
           {preview && (
             <div
               ref={previewRef}
               contentEditable={false}
               dangerouslySetInnerHTML={{ __html: preview }}
-              className="prose text-theme-text"
+              className="h-full prose text-theme-text overflow-auto"
             ></div>
           )}
         </div>
       </div>
-      <button
-        className="w-52 absolute bottom-6 flex items-center justify-center gap-2 border border-zinc-500 rounded-xl bg-theme-secondary dark:bg-theme-primary text-white dark:text-theme-text py-2"
-        onClick={onSubmitHandler}
-      >
-        작성하기
-      </button>
+      <div className="flex gap-8">
+        <button
+          className="w-52 flex items-center justify-center gap-2 border border-zinc-500 rounded-xl bg-theme-secondary dark:bg-theme-primary text-white dark:text-theme-text py-2"
+          onClick={onSubmitHandler}
+        >
+          작성하기
+        </button>
+        <button
+          className="w-52 flex items-center justify-center gap-2 border border-zinc-500 rounded-xl bg-theme-secondary dark:bg-theme-primary text-white dark:text-theme-text py-2"
+          onClick={() => router.push('/admin')}
+        >
+          취소하기
+        </button>
+      </div>
     </div>
   );
 }

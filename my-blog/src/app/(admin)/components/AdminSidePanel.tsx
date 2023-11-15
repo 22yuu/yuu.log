@@ -4,18 +4,20 @@ import ContentIcon from '@/components/ui/icons/ContentIcon';
 import Pencil from '@/components/ui/icons/Pencil';
 import { LoginContextProps, useLoginContext } from '@/contexts/LoginProvider';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 
 export default function AdminSidePanel() {
   const { user } = useLoginContext() as LoginContextProps;
   const isAdmin = user.user.role === 'admin';
+  const pathName = usePathname().split('/')[3];
 
   return (
     <div className="fixed w-[350px] h-full bg-theme-primary transform -translate-x-full transition-transform ease-in duration-300 md:translate-x-0">
       <div className="w-full text-center mt-12">
         <Heading size={'xl'}>Yuu.log</Heading>
         <div className="p-4">
-          {isAdmin && (
+          {isAdmin && !pathName && (
             <Link
               href="/admin/posts/write"
               className="w-full flex items-center justify-center gap-2 border border-zinc-500 rounded-xl bg-theme-secondary dark:bg-theme-primary text-white dark:text-theme-text py-2"
