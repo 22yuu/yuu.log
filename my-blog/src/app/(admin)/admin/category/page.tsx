@@ -1,10 +1,10 @@
 'use client';
-import React, { useState } from 'react';
 import ContentHeader from '../../components/ContentHeader';
-import AngleRightIcon from '@/components/ui/icons/AngleRightIcon';
+import Categories from '../../components/Categories';
+import { useRef } from 'react';
 
 export default function CategoryPage() {
-  const [open, setOpen] = useState(false);
+  const categoriesRef = useRef();
 
   return (
     <div className="w-full max-w-[1200px] px-16 mt-12 md:ml-[350px]">
@@ -17,25 +17,8 @@ export default function CategoryPage() {
           </button>
         </div>
       </div>
-      <div className="w-full h-[90%] bg-theme-primary/50 px-8 pt-4">
-        <div className="flex w-full h-14 items-center bg-theme-primary border border-zinc-300 dark:border-zinc-500">
-          <button
-            onClick={() => setOpen(!open)}
-            className="w-14 h-14 bg-theme-bg flex justify-center items-center border border-l-0 border-zinc-300 dark:border-zinc-500"
-          >
-            <AngleRightIcon
-              className={`w-4 h-4 transform ${
-                open && 'rotate-90'
-              } transition-transform duration-300`}
-            />
-          </button>
-          <div className="flex w-full items-center justify-between px-6">
-            <p>FE</p>
-            <button className="w-14 flex items-center justify-center gap-2 border border-zinc-500 rounded-xl bg-theme-secondary dark:bg-theme-primary text-white dark:text-theme-text py-2 text-sm">
-              추가
-            </button>
-          </div>
-        </div>
+      <div className="w-full h-[90%] bg-theme-primary/50 px-8 pt-4 overflow-auto">
+        <Categories />
       </div>
     </div>
   );
