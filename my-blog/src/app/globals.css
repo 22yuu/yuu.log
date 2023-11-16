@@ -15,6 +15,10 @@ body {
   overflow-x: hidden;
 }
 
+[contenteditable='true']:empty:before {
+  content: attr(placeholder);
+}
+
 @layer base {
   :root {
     --color-theme-primary: 255 255 255;
