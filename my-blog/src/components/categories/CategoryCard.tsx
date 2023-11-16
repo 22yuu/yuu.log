@@ -14,7 +14,7 @@ export default function CategoryCard({ category }: Props) {
   return (
     <div className="mb-8 flex flex-col">
       <div
-        className="flex justify-between w-full rounded-t bg-theme-primary p-3 text-theme-text cursor-pointer border dark:border-none"
+        className="flex justify-between w-full rounded-t bg-theme-primary/30  p-3 text-theme-text cursor-pointer border dark:border-none"
         onClick={() => setOpen(!open)}
         key={category}
       >
