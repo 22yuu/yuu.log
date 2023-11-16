@@ -1,18 +1,21 @@
 import { Post } from '@/types/posts';
 import { BASE_URL } from './const';
+import path from 'path';
+import { readFile } from 'fs/promises';
 
 export const writePost = async (token: string, data: string) => {
+  // console.log(data);
   const res = await fetch(`${BASE_URL}/post/write`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
     credentials: 'include',
-    body: JSON.stringify(data),
+    body: JSON.stringify({ data: data }),
   });
 
-  console.log(res);
+  console.log(res.json());
 
   return res;
 };

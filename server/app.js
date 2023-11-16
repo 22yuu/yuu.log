@@ -23,13 +23,13 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   app.use(morgan('dev'));
 }
-app.use(express.json());
 app.use(
   cors({
     origin: true,
     credentials: true,
   })
 );
+app.use(express.json());
 app.use(cookieParser());
 
 // routes middleware

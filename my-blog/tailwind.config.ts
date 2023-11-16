@@ -27,5 +27,6 @@ const config: Config = {
   },
   plugins: [require('@tailwindcss/typography')],
   darkMode: 'class',
+  mode: 'jit',
 };
 export default config;

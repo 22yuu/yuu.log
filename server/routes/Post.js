@@ -8,7 +8,7 @@ import {
 } from '../controllers/postCtr.js';
 
 const router = express.Router();
-
+router.use(express.json());
 router.post('/write', writePost);
 router.put('/edit', editPost);
 router.get('/all-posts', allPosts);
