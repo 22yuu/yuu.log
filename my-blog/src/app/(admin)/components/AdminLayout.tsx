@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { ReactNode, useEffect, useState } from 'react';
-import AdminSidePanel from './AdminSidePanel';
-import { LoginContextProps, useLoginContext } from '@/contexts/LoginProvider';
-import Login from '@/components/admin/Login';
-import { getAccessToken } from '@/api/auth';
-import { UserInfo } from '@/types/user';
+import { ReactNode, useEffect, useState } from "react";
+import AdminSidePanel from "./AdminSidePanel";
+import { LoginContextProps, useLoginContext } from "@/contexts/LoginProvider";
+import Login from "@/components/admin/Login";
+import { getAccessToken } from "@/api/auth";
+import { UserInfo } from "@/types/user";
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const {
@@ -15,8 +15,8 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     setUser,
   } = (useLoginContext() as LoginContextProps) || {};
 
-  const isLogined = localStorage.getItem('isLogined');
-  const isGuest = localStorage.getItem('isGuest');
+  const isLogined = window && localStorage.getItem("isLogined");
+  const isGuest = window && localStorage.getItem("isGuest");
 
   useEffect(() => {
     const getToken = async () => {
@@ -35,8 +35,8 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     if (isGuest) {
       setUser({
         user: {
-          username: 'Guest',
-          role: 'guest',
+          username: "Guest",
+          role: "guest",
         },
       });
       setLoginLoading(true);
@@ -58,7 +58,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             {children}
           </>
         ) : (
-          'loading...!'
+          "loading...!"
         )}
       </div>
     </div>
