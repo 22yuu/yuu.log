@@ -1,14 +1,16 @@
-'use client';
+"use client";
 
-import AngleRightIcon from '@/components/ui/icons/AngleRightIcon';
-import { ChangeEvent, useState } from 'react';
-import SubCategoryItem from './SubCategoryItem';
-import { categoryList } from '@/constants/mock-categories';
+import AngleRightIcon from "@/components/ui/icons/AngleRightIcon";
+import { ChangeEvent, useState } from "react";
+import SubCategoryItem from "./SubCategoryItem";
+import { categoryList } from "@/constants/mock-categories";
+import { SubCategoryProps } from "@/types/category";
 
 type Props = {
   id?: string;
   name?: string;
   isAdd?: boolean;
+  subCategories?: SubCategoryProps[];
   toggleAdd?: () => void;
   onAdd: (category: string) => void;
   onEdit: (id: string, updated: string) => void;
@@ -18,6 +20,7 @@ type Props = {
 export default function MainCategoryItem({
   id,
   name,
+  subCategories,
   isAdd,
   toggleAdd,
   onAdd,
@@ -26,7 +29,7 @@ export default function MainCategoryItem({
 }: Props) {
   const [open, setOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
-  const [newCateoryName, setNewCategoryName] = useState('');
+  const [newCateoryName, setNewCategoryName] = useState("");
   const [editCategoryName, setEditCategoryName] = useState(name);
 
   const toggleEdit = () => {
@@ -50,7 +53,7 @@ export default function MainCategoryItem({
         >
           <AngleRightIcon
             className={`w-4 h-4 transform ${
-              open && 'rotate-90'
+              open && "rotate-90"
             } transition-transform duration-300`}
           />
         </button>
@@ -72,8 +75,10 @@ export default function MainCategoryItem({
                   onClick={() => {
                     if (isAdd) {
                       onAdd(newCateoryName);
+                      setNewCategoryName("");
                     } else if (isEdit) {
                       onEdit(id!, editCategoryName!);
+                      setEditCategoryName("");
                     }
                   }}
                 >
@@ -117,12 +122,12 @@ export default function MainCategoryItem({
           )}
         </div>
       </div>
-      {open && name && (
+      {open && subCategories && (
         <>
-          {categoryList[name].map((subCategory, index) => (
+          {subCategories.map((subCategory, index) => (
             <SubCategoryItem
-              key={`${subCategory}-${index}`}
-              name={subCategory}
+              key={`${subCategory._id}`}
+              name={subCategory.name}
             />
           ))}
         </>

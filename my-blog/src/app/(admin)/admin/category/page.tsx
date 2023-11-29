@@ -1,7 +1,8 @@
-'use client';
-import ContentHeader from '../../components/ContentHeader';
-import Categories from '../../components/Categories';
-import { useRef, useState } from 'react';
+"use client";
+
+import ContentHeader from "../../components/ContentHeader";
+import Categories from "../../components/Categories";
+import { useRef, useState } from "react";
 
 export default function CategoryPage() {
   const categoriesRef = useRef<HTMLDivElement>(null);

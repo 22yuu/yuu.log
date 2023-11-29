@@ -1,8 +1,10 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import MainCategoryItem from './MainCategoryItem';
-import { categoryList } from '@/constants/mock-categories';
+import { useEffect, useState } from "react";
+import MainCategoryItem from "./MainCategoryItem";
+import { categoryList } from "@/constants/mock-categories";
+import { addMainCategory, getAllCategories } from "@/api/category";
+import { CategoryProps } from "@/types/category";
 
 type Props = {
   isAdd?: boolean;
@@ -10,19 +12,32 @@ type Props = {
 };
 
 export default function Categories({ isAdd, toggleAdd }: Props) {
-  const [categoires, setCategories] = useState(Object.keys(categoryList));
+  // const [categoires, setCategories] = useState(Object.keys(categoryList));
+  const [categoires, setCategories] = useState<CategoryProps[]>([]);
+
+  useEffect(() => {
+    const getCategories = async () => {
+      getAllCategories().then((data) => {
+        setCategories(data);
+      });
+    };
+
+    getCategories();
+  }, []);
 
   const onAddCategory = (newCategoryName: string) => {
-    setCategories([...categoires, newCategoryName]);
+    // setCategories([...categoires, newCategoryName]);
+    addMainCategory(newCategoryName).then((data) => setCategories(data));
   };
 
   const onEditCateogry = (id: string, updated: string) => {
     setCategories(
-      categoires.map((name, index) => {
-        if (index === Number(id)) {
-          return updated;
+      categoires.map((category) => {
+        if (category._id === id) {
+          category.name = updated;
         }
-        return name;
+
+        return category;
       })
     );
   };
@@ -40,12 +55,13 @@ export default function Categories({ isAdd, toggleAdd }: Props) {
 
   return (
     <>
-      {categoires.map((category, index) => {
+      {categoires.map((category) => {
         return (
           <MainCategoryItem
-            key={`${category}-${index}`}
-            id={`${index}`}
-            name={category}
+            key={`${category._id}`}
+            id={`${category._id}`}
+            name={category.name}
+            subCategories={category.subCategoires || []}
             onAdd={onAddCategory}
             onDelete={onDeleteCategory}
             onEdit={onEditCateogry}
