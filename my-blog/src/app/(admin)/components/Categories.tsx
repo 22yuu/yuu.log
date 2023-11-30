@@ -3,7 +3,11 @@
 import { useEffect, useState } from "react";
 import MainCategoryItem from "./MainCategoryItem";
 import { categoryList } from "@/constants/mock-categories";
-import { addMainCategory, getAllCategories } from "@/api/category";
+import {
+  addMainCategory,
+  deleteMainCategory,
+  getAllCategories,
+} from "@/api/category";
 import { CategoryProps } from "@/types/category";
 
 type Props = {
@@ -43,14 +47,7 @@ export default function Categories({ isAdd, toggleAdd }: Props) {
   };
 
   const onDeleteCategory = (id: string) => {
-    setCategories(
-      categoires.filter((name, index) => {
-        if (index === Number(id)) {
-          return;
-        }
-        return name;
-      })
-    );
+    deleteMainCategory(id).then((data) => setCategories(data));
   };
 
   return (

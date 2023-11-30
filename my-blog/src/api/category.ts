@@ -20,8 +20,19 @@ export const addMainCategory = async (category: string) => {
 
   return res;
 };
-export const editMainCategory = () => {};
-export const deleteMainCategory = () => {};
+export const editMainCategory = async () => {};
+export const deleteMainCategory = async (id: string) => {
+  const res = await fetch(`${BASE_URL}/admin/category/delete?id=${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    cache: "no-store",
+  }).then((data) => data.json());
+
+  return res;
+};
 
 // 하위 카테고리
 export const addSubCategory = () => {};
