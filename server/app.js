@@ -28,6 +28,8 @@ app.use(
   cors({
     origin: true,
     credentials: true,
+    optionsSuccessStatus: 200,
+    methods: "*",
   })
 );
 app.use(express.json());
